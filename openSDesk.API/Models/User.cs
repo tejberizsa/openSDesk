@@ -8,6 +8,7 @@ namespace openSDesk.API.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
+        public string Role { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public string EMail { get; set; }
@@ -21,5 +22,8 @@ namespace openSDesk.API.Models
         public ICollection<Message> MessagesSent { get; set; }
         public ICollection<Message> MessagesReceived { get; set; }
         public ICollection<UserPhoto> Photos { get; set; }
+        public ICollection<UserGroupAssingment> Groups { get; set; }
+        public ICollection<Ticket> TicketsCreated { get; set; }
+        public ICollection<Ticket> TicketsAssigned { get; set; }
     }
 }
