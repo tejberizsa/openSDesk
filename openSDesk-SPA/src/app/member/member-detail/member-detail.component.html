@@ -1,0 +1,57 @@
+<!-- <div routerLink="['/members/', user.id]">aktiválás</div> -->
+
+<div class="container mt-4">
+  <div class="row">
+      <h3 class="ml-4">{{user.username | titlecase}}</h3>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img src="{{user.photoUrl}}" alt="{{user.username}}" class="card-img-top img-thumbnail">
+        <div class="card-body">
+          <div>
+            <strong>Kor:</strong>
+            <p>{{user.age}}</p>
+          </div>
+          <div>
+            <strong>Utoljára bejelentkezett:</strong>
+            <p>{{user.lastActive | timeago}}</p>
+          </div>
+          <div>
+            <strong>Regisztráció időpontja:</strong>
+            <p>{{user.registrationDate | timeago}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-secondary w-100" *ngIf="user.isFollowedByCurrentUser" (click)="sendDisfollow()">Mégse követem</button>
+            <button class="btn btn-primary w-100" *ngIf="!user.isFollowedByCurrentUser" (click)="sendFollow()">Követem</button>
+            <button class="btn btn-success w-100" (click)="selectTab(4)">Üzenet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset" #memberTabs>
+          <tab heading="Posztok és kérdések">
+            <app-member-posts></app-member-posts>
+          </tab>
+          <tab heading="Ismerősök">
+            <app-member-follow></app-member-follow>
+          </tab>
+          <tab heading="Névjegy">
+            <p>{{user.introduction}}</p>
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </tab>
+          <tab heading="Követések">
+            <app-member-interest></app-member-interest>
+          </tab>
+          <tab heading="Üzenet">
+            <app-member-messages [recipientId]="user.id"></app-member-messages>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

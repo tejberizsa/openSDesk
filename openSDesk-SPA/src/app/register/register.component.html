@@ -1,0 +1,73 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-8 col-sm-10">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+          <h2 class="text-center text-primary">Regisztráció</h2>
+          <hr>
+          <div class="form-group">
+            <label class="control-label" style="margin-right:10px">Nemed : </label>
+            <label class="radio-inline">
+              <input class="mr-3" type="radio" value="male" formControlName="gender">Férfi
+            </label>
+            <label class="radio-inline ml-3">
+              <input class="mr-3" type="radio" value="female" formControlName="gender">Nő
+            </label>
+          </div>
+
+          <div class="form-group">
+            <input type="date" [ngClass]="{'is-invalid': registerForm.get('birth').errors && registerForm.get('birth').touched}" 
+            class="form-control" formControlName="birth" placeholder="Életkor">
+            <div class="invalid-feedback" 
+            *ngIf="registerForm.get('birth').hasError('required') && registerForm.get('birth').touched" >Életkor kötelező</div>
+            <div class="invalid-feedback" 
+            *ngIf="registerForm.get('birth').hasError('min') && registerForm.get('birth').touched" >Túl fiatal vagy</div>
+            <div class="invalid-feedback" 
+            *ngIf="registerForm.get('birth').hasError('max') && registerForm.get('birth').touched" >Ennyire nem lehetsz öreg</div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}" 
+              class="form-control" formControlName="username" placeholder="Felhasználó">
+            <div class="invalid-feedback">Felhasználó kötelező</div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}" 
+              class="form-control" formControlName="email" placeholder="E-mail cím">
+              <div class="invalid-feedback" 
+              *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched" >E-mail kötelező</div>
+              <div class="invalid-feedback" 
+            *ngIf="registerForm.get('email').hasError('email') && registerForm.get('email').touched" >Hibás e-mail cím</div>
+          </div>
+        
+          <div class="form-group">
+            <input type="password" [ngClass]="{'is-invalid': registerForm.get('password').errors && registerForm.get('password').touched}" 
+            class="form-control" formControlName="password" placeholder="Jelszó">
+            <div class="invalid-feedback" 
+            *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched" >Jelszó kötelező</div>
+            <div class="invalid-feedback" 
+            *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched" >Jelszó rövid</div>
+            <div class="invalid-feedback" 
+            *ngIf="registerForm.get('password').hasError('maxlength') && registerForm.get('password').touched" >Jelszó hosszú</div>
+          </div>
+
+          <div class="form-group">
+            <input type="password" [ngClass]="{'is-invalid': registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').touched 
+            || registerForm.hasError('mismatch') && registerForm.get('confirmPassword').touched}"
+            class="form-control" formControlName="confirmPassword" placeholder="Jelszó ismét">
+            <div class="invalid-feedback" 
+            *ngIf="registerForm.get('confirmPassword').hasError('required') && registerForm.get('confirmPassword').touched" >Jelszó kötelező</div>
+            <div class="invalid-feedback" 
+            *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword').touched" >Jelszó nem egyezik</div>
+          </div>
+        
+          <div class="form-group text-center">
+            <button class="btn btn-success mr-2" [disabled]="!registerForm.valid" type="submit">Regisztáció</button>
+            <button class="btn btn-outline-secondary" type="button" [routerLink]="['/home']">Mégse</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+
+</div>

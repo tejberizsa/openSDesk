@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <div class="row">
+    <h3 class="col-4">Profilod</h3>
+  <div class="col-8">
+    <div *ngIf="editForm.dirty" class="alert alert-info">
+      <strong>Fontos, </strong>módosítottad a bemutatkozást, mentsd el, ha meg akarod tartani.
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img src="{{user.photoUrl}}" alt="{{user.username}}" class="card-img-top img-thumbnail">
+        <div class="card-body">
+          <div>
+            <strong>Kor:</strong>
+            <p>{{user.age}}</p>
+          </div>
+          <div>
+            <strong>Utoljára bejelentkezett:</strong>
+            <p>{{user.lastActive | timeago }}</p>
+          </div>
+          <div>
+            <strong>Regisztráció időpontja:</strong>
+            <p>{{user.registrationDate | timeago }}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+            <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Mentés</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="Névjegyed módosítása">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+                <h4>Névjegy</h4>
+                <textarea name="introduction" class="form-control" rows="12" [(ngModel)]="user.introduction"></textarea>
+            </form>
+          </tab>
+          <tab heading="Profilképeid">
+            <app-member-photo-editor [photos]="user.photos" (getMemberPhotoChange)="updateMainPhoto($event)"></app-member-photo-editor>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

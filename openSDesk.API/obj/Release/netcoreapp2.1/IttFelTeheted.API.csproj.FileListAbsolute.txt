@@ -1,0 +1,14 @@
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\bin\Release\netcoreapp2.1\openSDesk.API.deps.json
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\bin\Release\netcoreapp2.1\openSDesk.API.runtimeconfig.json
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\bin\Release\netcoreapp2.1\openSDesk.API.runtimeconfig.dev.json
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\bin\Release\netcoreapp2.1\openSDesk.API.dll
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\bin\Release\netcoreapp2.1\openSDesk.API.pdb
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.csprojAssemblyReference.cache
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.csproj.CoreCompileInputs.cache
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.RazorAssemblyInfo.cache
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.RazorAssemblyInfo.cs
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.AssemblyInfoInputs.cache
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.AssemblyInfo.cs
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.RazorTargetAssemblyInfo.cache
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.dll
+E:\work\JesusSaves\openSDesk.hu\openSDesk.API\obj\Release\netcoreapp2.1\openSDesk.API.pdb
