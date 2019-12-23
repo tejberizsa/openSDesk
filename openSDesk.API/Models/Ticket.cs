@@ -27,6 +27,7 @@ namespace openSDesk.API.Models
         public Status Status { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public ICollection<Note> Notes { get; set; }
         public ICollection<Resolution> Resolutions { get; set; }
         public ICollection<Survey> Surveys { get; set; }
         public int RequesterId { get; set; }

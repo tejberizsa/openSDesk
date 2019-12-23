@@ -10,8 +10,8 @@ using openSDesk.API.Data;
 namespace openSDesk.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191220212119_Initial_Create")]
-    partial class Initial_Create
+    [Migration("20191222121035_Initial Create")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,11 +98,15 @@ namespace openSDesk.API.Migrations
 
                     b.Property<int>("OwnerId");
 
+                    b.Property<int>("TicketId");
+
                     b.Property<string>("WorkNote");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OwnerId");
+
+                    b.HasIndex("TicketId");
 
                     b.ToTable("Notes");
                 });
@@ -402,6 +406,11 @@ namespace openSDesk.API.Migrations
                     b.HasOne("openSDesk.API.Models.User", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("openSDesk.API.Models.Ticket", "Ticket")
+                        .WithMany("Notes")
+                        .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

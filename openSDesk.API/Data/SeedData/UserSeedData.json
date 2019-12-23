@@ -1,0 +1,56 @@
+[
+  {
+    "Username": "Admin",
+    "Role": "Admin",
+    "Password": "password",
+    "Email": "email@email.com",
+    "RegistrationDate": "2019-12-21",
+    "LastActive": "2019-12-21",
+    "EMailConfirmed": true,
+    "Deleted": false,
+    "Introduction": "Elit irure adipisicing in magna ullamco occaecat eu ex amet adipisicing laborum. Officia sit minim adipisicing eiusmod nostrud irure veniam quis pariatur mollit deserunt laboris dolor. Proident commodo excepteur commodo sit laboris minim laborum cillum mollit amet sunt proident proident. Aliquip proident labore anim duis laborum est velit labore proident tempor ipsum. Tempor incididunt elit labore ea magna consequat. Laboris cillum non velit aute do et magna occaecat minim irure.\r\n",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/50.jpg",
+        "isMain": true,
+        "DateAdded": "2019-12-21"
+      }
+    ]
+  },
+  {
+    "Username": "Clerk",
+    "Role": "Clerk",
+    "Password": "password",
+    "Email": "email@email.com",
+    "RegistrationDate": "2019-12-21",
+    "LastActive": "2019-12-21",
+    "EMailConfirmed": true,
+    "Deleted": false,
+    "Introduction": "Elit irure adipisicing in magna ullamco occaecat eu ex amet adipisicing laborum. Officia sit minim adipisicing eiusmod nostrud irure veniam quis pariatur mollit deserunt laboris dolor. Proident commodo excepteur commodo sit laboris minim laborum cillum mollit amet sunt proident proident. Aliquip proident labore anim duis laborum est velit labore proident tempor ipsum. Tempor incididunt elit labore ea magna consequat. Laboris cillum non velit aute do et magna occaecat minim irure.\r\n",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/50.jpg",
+        "isMain": true,
+        "DateAdded": "2019-12-21"
+      }
+    ]
+  },
+  {
+    "Username": "User",
+    "Role": "User",
+    "Password": "password",
+    "Email": "email@email.com",
+    "RegistrationDate": "2019-12-21",
+    "LastActive": "2019-12-21",
+    "EMailConfirmed": true,
+    "Deleted": false,
+    "Introduction": "Elit irure adipisicing in magna ullamco occaecat eu ex amet adipisicing laborum. Officia sit minim adipisicing eiusmod nostrud irure veniam quis pariatur mollit deserunt laboris dolor. Proident commodo excepteur commodo sit laboris minim laborum cillum mollit amet sunt proident proident. Aliquip proident labore anim duis laborum est velit labore proident tempor ipsum. Tempor incididunt elit labore ea magna consequat. Laboris cillum non velit aute do et magna occaecat minim irure.\r\n",
+    "Photos": [
+      {
+        "url": "https://randomuser.me/api/portraits/men/50.jpg",
+        "isMain": true,
+        "DateAdded": "2019-12-21"
+      }
+    ]
+  }
+]

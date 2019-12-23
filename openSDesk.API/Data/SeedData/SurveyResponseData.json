@@ -1,0 +1,27 @@
+[
+    {
+        "Text": "Very Dissatisfied",
+        "Value": 1,
+        "Refusal": true
+    },
+    {
+        "Text": "Dissatisfied",
+        "Value": 2,
+        "Refusal": true
+    },
+    {
+        "Text": "Neutral",
+        "Value": 3,
+        "Refusal": false
+    },
+    {
+        "Text": "Satisfied",
+        "Value": 4,
+        "Refusal": false
+    },
+    {
+        "Text": "Very Satisfied",
+        "Value": 5,
+        "Refusal": false
+    }
+]
