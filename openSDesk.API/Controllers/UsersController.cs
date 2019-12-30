@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using openSDesk.API.Data;
 using openSDesk.API.Dtos;
 using openSDesk.API.Helpers;
-using openSDesk.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -38,6 +38,8 @@ namespace openSDesk.API
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<ISettingsRepository, SettingsRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters

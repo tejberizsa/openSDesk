@@ -13,7 +13,7 @@ namespace openSDesk.API.Data
         Task<Ticket> GetTicket(int ticketId);
         Task<bool> AssignToUser(int ticketId, int userId);
         Task<bool> AssignToGroup(int ticketId, int groupId);
-        Task<bool> UpdateStatus(int ticketId, Status status);
+        Task<bool> UpdateStatus(int ticketId, int statusId, int subStatusId);
         Task<bool> ResolveTicket(int ticketId, Resolution resolution);
         Task<bool> SurveyTicket(int ticketId, Survey survey);
     }

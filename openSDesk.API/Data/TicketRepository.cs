@@ -29,7 +29,8 @@ namespace openSDesk.API.Data
         public async Task<Ticket> GetTicket(int ticketId)
         {
             var ticket = await _context.Tickets.Include(t => t.Source)
-                                               .Include(t => t.Status).ThenInclude(s => s.SubStatus)
+                                               .Include(t => t.Status)
+                                               .Include(t => t.SubStatus)
                                                .Include(t => t.Category)
                                                .Include(t => t.Notes).ThenInclude(n => n.Owner)
                                                .Include(t => t.Resolutions).ThenInclude(r => r.Owner)
@@ -71,14 +72,15 @@ namespace openSDesk.API.Data
             return await SaveAll();
         }
 
-        public async Task<bool> UpdateStatus(int ticketId, Status status)
+        public async Task<bool> UpdateStatus(int ticketId, int statusId, int subStatusId)
         {
             var ticketToUpdate = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == ticketId);
             if (ticketToUpdate == null)
             {
                 return false;
             }
-            ticketToUpdate.Status = status;
+            ticketToUpdate.StatusId = statusId;
+            ticketToUpdate.SubStatusId = subStatusId;
             return await SaveAll();
         }
 
@@ -111,7 +113,8 @@ namespace openSDesk.API.Data
                                           .Include(t => t.Requester)
                                           .Include(t => t.AssignmentGroup)
                                           .Include(t => t.AssignedTo)
-                                          .Include(t => t.Status).ThenInclude(s => s.SubStatus)
+                                          .Include(t => t.Status)
+                                          .Include(t => t.SubStatus)
                                           .Include(t => t.Resolutions)
                                           .Include(t => t.Surveys).ThenInclude(s => s.Response)
                                           .AsQueryable();
