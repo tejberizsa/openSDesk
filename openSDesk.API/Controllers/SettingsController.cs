@@ -60,7 +60,7 @@ namespace openSDesk.API.Controllers
             throw new Exception($"Sub-status {id} not found, failed to update");
         }
 
-        [HttpPost("{userId}")]
+        [HttpPost("{userId}/{groupId}")]
         public async Task<IActionResult> AssignUserToGroup(int userId, int groupId)
         {
             await _setRepo.AssignUserToGroup(userId, groupId);
@@ -70,7 +70,7 @@ namespace openSDesk.API.Controllers
             throw new Exception($"Update failed on save");
         }
 
-        [HttpPost("{userId}")]
+        [HttpPost("{userId}/{groupId}")]
         public async Task<IActionResult> RemoveUserFromGroup(int userId, int groupId)
         {
             await _setRepo.RemoveUserFromGroup(userId, groupId);

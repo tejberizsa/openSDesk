@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {}
+    "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {}
   },
   "projects": {
-    "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {
+    "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+        "projectUniqueName": "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
         "projectName": "openSDesk.API",
-        "projectPath": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+        "projectPath": "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
         "packagesPath": "C:\\Users\\nvarga\\.nuget\\packages\\",
-        "outputPath": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\obj\\",
+        "outputPath": "c:\\JesusSaves\\openSDesk\\openSDesk.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

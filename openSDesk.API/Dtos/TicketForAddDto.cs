@@ -6,12 +6,12 @@ namespace openSDesk.API.Dtos
 {
     public class TicketForAddDto
     {
-        public TicketForAddDto()
-        {
-            CreatedAt = DateTime.Now;
-            ModifiedAt = DateTime.Now;
-            Deleted = false;
-        }
+        // public TicketForAddDto()
+        // {
+        //     CreatedAt = DateTime.Now;
+        //     ModifiedAt = DateTime.Now;
+        //     Deleted = false;
+        // }
 
         [Required(ErrorMessage = "Summary or title required")]
         [StringLength(250, ErrorMessage = "Summary cannot be that long")]
@@ -26,7 +26,7 @@ namespace openSDesk.API.Dtos
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
         public bool Deleted { get; set; }
-        public string Source { get; set; }
+        public int SourceId { get; set; }
         
         [Required(ErrorMessage = "Category required")]
         public int CategoryId { get; set; }
