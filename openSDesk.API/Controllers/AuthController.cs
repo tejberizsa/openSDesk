@@ -11,6 +11,7 @@ using openSDesk.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 
 namespace openSDesk.API.Controllers
 {
@@ -98,11 +99,13 @@ namespace openSDesk.API.Controllers
             if (userFromRepo.Deleted == true)
                 return BadRequest("Felhasználó kitiltva.");
 
-            var claims = new[]
+            var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username)
             };
+
+            claims.Add(new Claim(ClaimTypes.Role, userFromRepo.Role.ToString()));
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
                 .GetBytes(_config.GetSection("AppSettings:Token").Value));

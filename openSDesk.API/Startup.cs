@@ -52,6 +52,16 @@ namespace openSDesk.API
                     };
                 });
             services.AddScoped<LogUserActivity>();
+
+            services.AddAuthorization(options => 
+            {
+                options.AddPolicy("RequireUserRole", policy =>  
+                            policy.RequireRole("user", "clerk", "admin"));
+                options.AddPolicy("RequireClerkRole", policy =>  
+                            policy.RequireRole("clerk", "admin"));
+                options.AddPolicy("RequireAdminRole", policy =>  
+                            policy.RequireRole("admin"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
