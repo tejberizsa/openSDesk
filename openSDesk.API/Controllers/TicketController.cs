@@ -75,35 +75,34 @@ namespace openSDesk.API.Controllers
             _ticketRepo.Add(noteToCreate);
 
             if (await _ticketRepo.SaveAll())
-            {
                 return Ok("Note saved");
-            }
 
             throw new System.Exception("Failed to save note");
         }
 
         [HttpPost("{userId}/{groupId}")]
-        public async Task<IActionResult> AssignToGroup(int id, int groupId)
+        public async Task<IActionResult> AssignToGroup(int userId, int groupId)
         {
-            var ticketFromRepo = await _ticketRepo.GetTicket(id);
+            var ticketFromRepo = await _ticketRepo.GetTicket(userId);
 
             if (ticketFromRepo == null)
                 return BadRequest("Ticket not exist");
             
-            ticketFromRepo.AssignmentGroupId = groupId == 0 ? null : groupId;
+            if (groupId == 0)
+                ticketFromRepo.AssignmentGroupId = null;
+            else
+                ticketFromRepo.AssignmentGroupId = groupId;
 
             if (await _ticketRepo.SaveAll())
-            {
                 return Ok("Assignment group updated");
-            }
 
             throw new System.Exception("Failed to save");
         }
 
-        [HttpPost("{userId}/{userId}")]
-        public async Task<IActionResult> AssignToUser(int id, int userId)
+        [HttpPost("{ticketId}/{userId}")]
+        public async Task<IActionResult> AssignToUser(int ticketId, int userId)
         {
-            var ticketFromRepo = await _ticketRepo.GetTicket(id);
+            var ticketFromRepo = await _ticketRepo.GetTicket(ticketId);
 
             if (ticketFromRepo == null)
                 return BadRequest("Ticket not exist");
@@ -117,25 +116,68 @@ namespace openSDesk.API.Controllers
             {
                 if (group.UserGroupId == ticketFromRepo.AssignmentGroupId)
                 {
-                    ticketFromRepo.AssignedToId = userId == 0 ? null : userId;
+                    if (userId == 0)
+                        ticketFromRepo.AssignedToId = null;
+                    else
+                        ticketFromRepo.AssignedToId = userId;
 
                     if (await _ticketRepo.SaveAll())
-                    {
                         return Ok($"Assigned to {userFromRepo.Username}");
-                    }
                     else
-                    {
                         throw new System.Exception("Failed to save");
-                    }
                 }
             }
             return BadRequest($"Incorrect group {ticketFromRepo.AssignmentGroup.Name} for user {userFromRepo.Username}");
         }
 
-        [HttpPost("UpdateStaus")]
-        public async Task<IActionResult> UpdateStaus()
+        [HttpPost("{ticketId}/UpdateStatus")]
+        public async Task<IActionResult> UpdateStatus(int ticketId, TicketForUpdateDto ticketForUpdateDto)
         {
+            var ticketFromRepo = await _ticketRepo.GetTicket(ticketId);
 
+            if (ticketFromRepo == null)
+                return BadRequest("Ticket not exist");
+
+            ticketFromRepo.Priority = ticketForUpdateDto.Priority;
+            ticketFromRepo.StatusId = ticketForUpdateDto.StatusId;
+            ticketFromRepo.CategoryId = ticketForUpdateDto.CategoryId;
+            ticketFromRepo.ResolvedAt = ticketForUpdateDto.ResolvedAt ?? ticketFromRepo.ResolvedAt;
+            ticketFromRepo.ClosedAt = ticketForUpdateDto.ClosedAt ?? ticketFromRepo.ClosedAt;
+            ticketFromRepo.InvoicedAt = ticketForUpdateDto.InvoicedAt ?? ticketFromRepo.InvoicedAt;
+            ticketFromRepo.SubStatusId = ticketForUpdateDto.SubStatusId ?? ticketFromRepo.SubStatusId;
+
+            if (await _ticketRepo.SaveAll())
+                return Ok($"Ticket updated");
+            else
+                throw new System.Exception("Failed to save");
+        }
+
+        [HttpPost("{ticketId}/ResolveTicket")]
+        public async Task<IActionResult> ResolveTicket(int ticketId, ResolutionForAddDto resolutionForAddDto)
+        {
+            var ownerFromRepo = await _appRepo.GetUser(resolutionForAddDto.OwnerId);
+
+            if (ownerFromRepo == null)
+                return BadRequest("Owner user not exist");
+            
+            if (resolutionForAddDto.OwnerId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            
+            var ticketFromRepo = await _ticketRepo.GetTicket(ticketId);
+
+            if (ticketFromRepo == null)
+                return BadRequest("Owner user not exist");
+
+            var resolutionToCreate = _mapper.Map<Resolution>(resolutionForAddDto);
+
+            _ticketRepo.Add(resolutionForAddDto);
+
+            ticketFromRepo.ResolvedAt = resolutionForAddDto.CreatedAt;
+
+            if (await _ticketRepo.SaveAll())
+                return Ok("Resolution saved");
+
+            throw new System.Exception("Failed to save resolution");
         }
     }
 }

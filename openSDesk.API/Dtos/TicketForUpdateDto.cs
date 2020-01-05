@@ -1,3 +1,6 @@
+using System;
+using static openSDesk.API.Helpers.Enums;
+
 namespace openSDesk.API.Dtos
 {
     public class TicketForUpdateDto
@@ -9,9 +12,5 @@ namespace openSDesk.API.Dtos
         public int StatusId { get; set; }
         public int? SubStatusId { get; set; }
         public int CategoryId { get; set; }
-        public int AssignmentGroupId { get; set; }
-        public int AssignedToId { get; set; }
-        public ResolutionForDetailedDto Resolution { get; set; }
-        public SurveyForDetailedDto Surveys { get; set; }
     }
 }

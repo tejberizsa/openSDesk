@@ -27,8 +27,8 @@ namespace openSDesk.API.Helpers
             
             // bussines logic specific mappings
             CreateMap<TicketForAddDto, Ticket>()
-                .ForMember(t => t.CreatedAt, opt => opt.MapFrom(opt => DateTime.Now))
-                .ForMember(t => t.ModifiedAt, opt => opt.MapFrom(opt => DateTime.Now))
+                .ForMember(t => t.CreatedAt, opt => opt.MapFrom(dto => DateTime.Now))
+                .ForMember(t => t.ModifiedAt, opt => opt.MapFrom(dto => DateTime.Now))
                 .ForMember(t => t.Deleted, opt => opt.Equals(false));
             CreateMap<Ticket, TicketForDetailedDto>()
                 .ForMember(dto => dto.Source, opt => opt.MapFrom(t => t.Source.Text))
@@ -46,6 +46,8 @@ namespace openSDesk.API.Helpers
             CreateMap<Survey, SurveyForDetailedDto>()
                 .ForMember(dto => dto.Response, opt => opt.MapFrom(s => s.Response.Text))
                 .ForMember(dto => dto.Response, opt => opt.MapFrom(s => s.Response.Refusal));
+            CreateMap<ResolutionForAddDto, Resolution>();
+            
         }
     }
 }
