@@ -43,34 +43,34 @@ namespace openSDesk.API.Data
             return ticket;
         }
 
-        public async Task<bool> ResolveTicket(int ticketId, Resolution resolution)
-        {
-            var ticketToResolve = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == ticketId);
-            if (ticketToResolve == null)
-            {
-                return false;
-            }
-            ticketToResolve.Resolutions.Add(resolution);
-            return await SaveAll();
-        }
+        // public async Task<bool> ResolveTicket(int ticketId, Resolution resolution)
+        // {
+        //     var ticketToResolve = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == ticketId);
+        //     if (ticketToResolve == null)
+        //     {
+        //         return false;
+        //     }
+        //     ticketToResolve.Resolutions.Add(resolution);
+        //     return await SaveAll();
+        // }
 
-        public async Task<bool> SurveyTicket(int ticketId, Survey survey)
-        {
-            var ticketToSurvay = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == ticketId);
-            if (ticketToSurvay == null)
-            {
-                return false;
-            }
-            ticketToSurvay.Surveys.Add(survey);
-            if (survey.Response.Refusal)
-            {
-                foreach(var resolution in ticketToSurvay.Resolutions)
-                {
-                    resolution.Refused = true;
-                }
-            }
-            return await SaveAll();
-        }
+        // public async Task<bool> SurveyTicket(int ticketId, Survey survey)
+        // {
+        //     var ticketToSurvay = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == ticketId);
+        //     if (ticketToSurvay == null)
+        //     {
+        //         return false;
+        //     }
+        //     ticketToSurvay.Surveys.Add(survey);
+        //     if (survey.Response.Refusal)
+        //     {
+        //         foreach(var resolution in ticketToSurvay.Resolutions)
+        //         {
+        //             resolution.Refused = true;
+        //         }
+        //     }
+        //     return await SaveAll();
+        // }
 
         public async Task<bool> UpdateStatus(int ticketId, int statusId, int subStatusId)
         {
@@ -154,6 +154,12 @@ namespace openSDesk.API.Data
             
             tickets = tickets.OrderByDescending(t => t.CreatedAt);
             return await PagedList<Ticket>.CreateAsync(tickets, ticketParams.PageNumber, ticketParams.PageSize);
+        }
+
+        public async Task<bool> ResponseIsRefusal(int surveyResponseId)
+        {
+            var response = await _context.SurvayResponses.FirstOrDefaultAsync(sr => sr.Id == surveyResponseId);
+            return response.Refusal;
         }
     }
 }

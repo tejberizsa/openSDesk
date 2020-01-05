@@ -166,11 +166,11 @@ namespace openSDesk.API.Controllers
             var ticketFromRepo = await _ticketRepo.GetTicket(ticketId);
 
             if (ticketFromRepo == null)
-                return BadRequest("Owner user not exist");
+                return BadRequest("Ticket not exist");
 
             var resolutionToCreate = _mapper.Map<Resolution>(resolutionForAddDto);
 
-            _ticketRepo.Add(resolutionForAddDto);
+            ticketFromRepo.Resolutions.Add(resolutionToCreate);
 
             ticketFromRepo.ResolvedAt = resolutionForAddDto.CreatedAt;
 
@@ -178,6 +178,35 @@ namespace openSDesk.API.Controllers
                 return Ok("Resolution saved");
 
             throw new System.Exception("Failed to save resolution");
+        }
+
+        [HttpPost("{ticketId}/SurveyTicket")]
+        public async Task<IActionResult> SurveyTicket(int ticketId, SurveyForAddDto surveyForAddDto)
+        {
+            var ticketFromRepo = await _ticketRepo.GetTicket(ticketId);
+
+            if (ticketFromRepo == null)
+                return BadRequest("Ticket not exist");
+
+            var survayToCreate = _mapper.Map<Survey>(surveyForAddDto);
+            ticketFromRepo.Surveys.Add(survayToCreate);
+
+            if (await _ticketRepo.ResponseIsRefusal(surveyForAddDto.ResponseId))
+            {
+                ticketFromRepo.StatusId = 1; //return to assigned status
+            }
+
+            if (await _ticketRepo.SaveAll())
+                return Ok("Survey saved");
+
+            throw new System.Exception("Failed to save survey");
+        }
+
+        [HttpGet("GetTicketThread")]
+        public async Task<IActionResult> GetTicketThread(TicketParams ticketParams)
+        {
+            var ticketsToReturn = await _ticketRepo.GetTicketThread(ticketParams);
+            return Ok(ticketParams);
         }
     }
 }

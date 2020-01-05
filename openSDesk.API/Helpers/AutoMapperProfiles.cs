@@ -47,7 +47,7 @@ namespace openSDesk.API.Helpers
                 .ForMember(dto => dto.Response, opt => opt.MapFrom(s => s.Response.Text))
                 .ForMember(dto => dto.Response, opt => opt.MapFrom(s => s.Response.Refusal));
             CreateMap<ResolutionForAddDto, Resolution>();
-            
+            CreateMap<SurveyForAddDto, Survey>();
         }
     }
 }
