@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using openSDesk.API.Models;
 using static openSDesk.API.Helpers.Enums;
 
 namespace openSDesk.API.Dtos
@@ -22,17 +23,17 @@ namespace openSDesk.API.Dtos
         public int SourceId { get; set; }
         public string Source { get; set; }
         public int StatusId { get; set; }
-        public string Status { get; set; }
+        public Status Status { get; set; }
         public int SubStatusId { get; set; }
-        public string SubStatus { get; set; }
+        public SubStatus SubStatus { get; set; }
         public int CategoryId { get; set; }
-        public string Category { get; set; }
+        public Category Category { get; set; }
         public int RequesterId { get; set; }
-        public string Requester { get; set; }
+        public UserForTicketDetailDto Requester { get; set; }
         public int AssignmentGroupId { get; set; }
-        public string AssignmentGroup { get; set; }
+        public UserGroupForTicketDetailDto AssignmentGroup { get; set; }
         public int AssignedToId { get; set; }
-        public string AssignedTo { get; set; }
+        public UserForTicketDetailDto AssignedTo { get; set; }
         
         public ICollection<NoteForDetailedDto> Notes { get; set; }
         public ICollection<ResolutionForDetailedDto> Resolutions { get; set; }

@@ -25,16 +25,6 @@ namespace openSDesk.API.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{id}", Name = "GetTicket")]
-        public async Task<IActionResult> GetTicket(int id)
-        {
-            Ticket ticket = await _ticketRepo.GetTicket(id);
-
-            var ticketToReturn = _mapper.Map<TicketForDetailedDto>(ticket);
-
-            return Ok(ticketToReturn);
-        }
-
         [HttpPost("AddTicket")]
         public async Task<IActionResult> AddTicket(TicketForAddDto ticketForAddDto)
         {
@@ -80,10 +70,10 @@ namespace openSDesk.API.Controllers
             throw new System.Exception("Failed to save note");
         }
 
-        [HttpPost("{userId}/{groupId}")]
-        public async Task<IActionResult> AssignToGroup(int userId, int groupId)
+        [HttpPost("{ticketId}/AssignToGroup/{groupId}")]
+        public async Task<IActionResult> AssignToGroup(int ticketId, int groupId)
         {
-            var ticketFromRepo = await _ticketRepo.GetTicket(userId);
+            var ticketFromRepo = await _ticketRepo.GetTicket(ticketId);
 
             if (ticketFromRepo == null)
                 return BadRequest("Ticket not exist");
@@ -99,7 +89,7 @@ namespace openSDesk.API.Controllers
             throw new System.Exception("Failed to save");
         }
 
-        [HttpPost("{ticketId}/{userId}")]
+        [HttpPost("{ticketId}/AssignToUser/{userId}")]
         public async Task<IActionResult> AssignToUser(int ticketId, int userId)
         {
             var ticketFromRepo = await _ticketRepo.GetTicket(ticketId);
@@ -200,6 +190,16 @@ namespace openSDesk.API.Controllers
                 return Ok("Survey saved");
 
             throw new System.Exception("Failed to save survey");
+        }
+        
+        [HttpGet("{id}", Name = "GetTicket")]
+        public async Task<IActionResult> GetTicket(int id)
+        {
+            Ticket ticket = await _ticketRepo.GetTicket(id);
+
+            var ticketToReturn = _mapper.Map<TicketForDetailedDto>(ticket);
+
+            return Ok(ticketToReturn);
         }
 
         [HttpGet("GetTicketThread")]

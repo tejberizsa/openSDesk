@@ -31,13 +31,13 @@ namespace openSDesk.API.Helpers
                 .ForMember(t => t.ModifiedAt, opt => opt.MapFrom(dto => DateTime.Now))
                 .ForMember(t => t.Deleted, opt => opt.Equals(false));
             CreateMap<Ticket, TicketForDetailedDto>()
-                .ForMember(dto => dto.Source, opt => opt.MapFrom(t => t.Source.Text))
-                .ForMember(dto => dto.Status, opt => opt.MapFrom(t => t.Status.Text))
-                .ForMember(dto => dto.SubStatus, opt => opt.MapFrom(t => t.SubStatus.Text))
-                .ForMember(dto => dto.Category, opt => opt.MapFrom(t => t.Category.Text))
-                .ForMember(dto => dto.Requester, opt => opt.MapFrom(t => t.Requester.Username))
-                .ForMember(dto => dto.AssignmentGroup, opt => opt.MapFrom(t => t.AssignmentGroup.Name))
-                .ForMember(dto => dto.AssignedTo, opt => opt.MapFrom(t => t.AssignedTo.Username));
+                .ForMember(dto => dto.Source, opt => opt.MapFrom(t => t.Source.Text));
+                //.ForMember(dto => dto.Status, opt => opt.MapFrom(t => t.Status.Text))
+                //.ForMember(dto => dto.SubStatus, opt => opt.MapFrom(t => t.SubStatus.Text))
+                //.ForMember(dto => dto.Category, opt => opt.MapFrom(t => t.Category.Text))
+                //.ForMember(dto => dto.Requester, opt => opt.MapFrom(t => t.Requester.Username))
+                //.ForMember(dto => dto.AssignmentGroup, opt => opt.MapFrom(t => t.AssignmentGroup.Name))
+                //.ForMember(dto => dto.AssignedTo, opt => opt.MapFrom(t => t.AssignedTo.Username));
             CreateMap<Note, NoteForDetailedDto>()
                 .ForMember(dto => dto.Owner, opt => opt.MapFrom(n => n.Owner.Username));
             CreateMap<Resolution, ResolutionForDetailedDto>()
@@ -48,6 +48,8 @@ namespace openSDesk.API.Helpers
                 .ForMember(dto => dto.Response, opt => opt.MapFrom(s => s.Response.Refusal));
             CreateMap<ResolutionForAddDto, Resolution>();
             CreateMap<SurveyForAddDto, Survey>();
+            CreateMap<UserGroup, UserGroupForTicketDetailDto>();
+            CreateMap<User, UserForTicketDetailDto>();
         }
     }
 }

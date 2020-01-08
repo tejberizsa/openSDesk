@@ -1,5 +1,13 @@
 import { PriorityType } from './priorityType.enum';
 import { TicketType } from './ticketType.enum';
+import { User } from './user';
+import { Status } from './status';
+import { SubStatus } from './subStatus';
+import { Category } from './category';
+import { Note } from './note';
+import { Resolution } from './resolution';
+import { Survey } from './survey';
+import { UserGroup } from './userGroup';
 
 export interface Ticket {
     id: number;
@@ -16,5 +24,15 @@ export interface Ticket {
     sourceId: number;
     source: string;
     statusId: number;
-    status: string;
+    status: Status;
+    subStatus: SubStatus;
+    category: Category;
+    requesterId: number;
+    requester: User;
+    assignedToId: number;
+    assignedTo: User;
+    assignmentGroup: UserGroup;
+    notes: Note[];
+    resolutions: Resolution[];
+    surveys: Survey[];
 }

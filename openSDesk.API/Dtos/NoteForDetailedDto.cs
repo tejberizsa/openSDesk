@@ -8,6 +8,6 @@ namespace openSDesk.API.Dtos
         public string WorkNote { get; set; }
         public DateTime CreatedAt { get; set; }
         public int OwnerId { get; set; }
-        public string Owner { get; set; }
+        public UserForTicketDetailDto Owner { get; set; }
     }
 }
