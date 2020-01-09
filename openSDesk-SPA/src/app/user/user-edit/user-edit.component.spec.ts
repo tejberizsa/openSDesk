@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { UserEditComponent } from './user-edit.component';
 
-describe('MemberEditComponent', () => {
+describe('UserEditComponent', () => {
   let component: UserEditComponent;
   let fixture: ComponentFixture<UserEditComponent>;
 

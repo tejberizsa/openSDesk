@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { UserMessagesComponent } from './user-messages.component';
 
-describe('MemberMessagesComponent', () => {
+describe('UserMessagesComponent', () => {
   let component: UserMessagesComponent;
   let fixture: ComponentFixture<UserMessagesComponent>;
 

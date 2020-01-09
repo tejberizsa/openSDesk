@@ -34,7 +34,7 @@
           Üdvözlet {{authService.decodedToken?.unique_name | titlecase}}
         </a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a class="dropdown-item" [routerLink]="['/member/edit']"><i class="fa fa-user"></i> Profil</a>
+          <a class="dropdown-item" [routerLink]="['/user/edit']"><i class="fa fa-user"></i> Profil</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="['/policy']"><i class="fa fa-info-circle"></i> Adatvédelem</a>
           <div class="dropdown-divider"></div>
@@ -43,7 +43,7 @@
         </div>
       </div>
   
-      <div *ngIf="!loggedIn()">
+      <!-- <div *ngIf="!loggedIn()">
       <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
         <input class="form-control mr-sm-2" type="text" name="username" 
           placeholder="Felhasználó" required [(ngModel)]="model.username">
@@ -52,7 +52,7 @@
         <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Bejelentkezek</button>
         <button *ngIf="!loggedIn()" [routerLink]="['/register']" class="btn btn-info my-2 my-sm-0 ml-2" type="button">Regisztrálok</button>
       </form>
-    </div>
+    </div> -->
   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

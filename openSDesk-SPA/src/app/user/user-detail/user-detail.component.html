@@ -32,19 +32,19 @@
     <div class="col-sm-8">
       <div class="tab-panel">
         <tabset class="member-tabset" #memberTabs>
-          <tab heading="Posztok és kérdések">
+          <!-- <tab heading="Posztok és kérdések">
             <app-user-posts></app-user-posts>
-          </tab>
-          <tab heading="Ismerősök">
+          </tab> -->
+          <!-- <tab heading="Ismerősök">
             <app-user-follow></app-user-follow>
-          </tab>
+          </tab> -->
           <tab heading="Névjegy">
             <p>{{user.introduction}}</p>
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>
-          <tab heading="Követések">
+          <!-- <tab heading="Követések">
             <app-user-interest></app-user-interest>
-          </tab>
+          </tab> -->
           <tab heading="Üzenet">
             <app-user-messages [recipientId]="user.id"></app-user-messages>
           </tab>
