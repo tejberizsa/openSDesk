@@ -24,15 +24,15 @@ import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { RegisterGuard } from './_guards/register.guard';
-import { MemberDetailComponent } from './member/member-detail/member-detail.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserService } from './_services/user.service';
-import { MemberEditComponent } from './member/member-edit/member-edit.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
-import { MemberMessagesComponent } from './member/member-messages/member-messages.component';
-import { MemberPhotoEditorComponent } from './member/member-photo-editor/member-photo-editor.component';
+import { UserMessagesComponent } from './user/user-messages/user-messages.component';
+import { UserPhotoEditorComponent } from './user/user-photo-editor/user-photo-editor.component';
 import { PolicyComponent } from './policy/policy.component';
 import { environment } from 'src/environments/environment';
-import { MemberConfirmComponent } from './member/member-confirm/member-confirm.component';
+import { UserConfirmComponent } from './user/user-confirm/user-confirm.component';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -72,12 +72,12 @@ export class MyIntl extends TimeagoIntl {
          HomeComponent,
          RegisterComponent,
          MessagesComponent,
-         MemberDetailComponent,
-         MemberEditComponent,
-         MemberMessagesComponent,
-         MemberPhotoEditorComponent,
+         UserDetailComponent,
+         UserEditComponent,
+         UserMessagesComponent,
+         UserPhotoEditorComponent,
          PolicyComponent,
-         MemberConfirmComponent
+         UserConfirmComponent
       ],
       imports: [
          [ BrowserModule, CollapseModule.forRoot()],

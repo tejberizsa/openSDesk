@@ -8,11 +8,11 @@ import { TabsetComponent } from 'ngx-bootstrap';
 import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
-  selector: 'app-member-detail',
-  templateUrl: './member-detail.component.html',
-  styleUrls: ['./member-detail.component.css']
+  selector: 'app-user-detail',
+  templateUrl: './user-detail.component.html',
+  styleUrls: ['./user-detail.component.css']
 })
-export class MemberDetailComponent implements OnInit {
+export class UserDetailComponent implements OnInit {
   @ViewChild('memberTabs') memberTabs: TabsetComponent;
   user: User;
   galleryOptions: NgxGalleryOptions[];

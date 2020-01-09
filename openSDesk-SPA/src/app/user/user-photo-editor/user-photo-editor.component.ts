@@ -7,11 +7,11 @@ import { UserService } from 'src/app/_services/user.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
-  selector: 'app-member-photo-editor',
-  templateUrl: './member-photo-editor.component.html',
-  styleUrls: ['./member-photo-editor.component.css']
+  selector: 'app-user-photo-editor',
+  templateUrl: './user-photo-editor.component.html',
+  styleUrls: ['./user-photo-editor.component.css']
 })
-export class MemberPhotoEditorComponent implements OnInit {
+export class UserPhotoEditorComponent implements OnInit {
   @Input() photos: Photo[];
   @Output() getMemberPhotoChange = new EventEmitter<string>();
   uploader: FileUploader;

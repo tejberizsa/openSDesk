@@ -33,20 +33,20 @@
       <div class="tab-panel">
         <tabset class="member-tabset" #memberTabs>
           <tab heading="Posztok és kérdések">
-            <app-member-posts></app-member-posts>
+            <app-user-posts></app-user-posts>
           </tab>
           <tab heading="Ismerősök">
-            <app-member-follow></app-member-follow>
+            <app-user-follow></app-user-follow>
           </tab>
           <tab heading="Névjegy">
             <p>{{user.introduction}}</p>
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>
           <tab heading="Követések">
-            <app-member-interest></app-member-interest>
+            <app-user-interest></app-user-interest>
           </tab>
           <tab heading="Üzenet">
-            <app-member-messages [recipientId]="user.id"></app-member-messages>
+            <app-user-messages [recipientId]="user.id"></app-user-messages>
           </tab>
         </tabset>
       </div>

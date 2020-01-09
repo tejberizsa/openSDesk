@@ -5,11 +5,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
-  selector: 'app-member-confirm',
-  templateUrl: './member-confirm.component.html',
-  styleUrls: ['./member-confirm.component.css']
+  selector: 'app-user-confirm',
+  templateUrl: './user-confirm.component.html',
+  styleUrls: ['./user-confirm.component.css']
 })
-export class MemberConfirmComponent implements OnInit {
+export class UserConfirmComponent implements OnInit {
   confirm: Confirm = { id: '', confirmkey: ''};
 
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute,

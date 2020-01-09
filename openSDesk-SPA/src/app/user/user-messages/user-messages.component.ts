@@ -6,11 +6,11 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-member-messages',
-  templateUrl: './member-messages.component.html',
-  styleUrls: ['./member-messages.component.css']
+  selector: 'app-user-messages',
+  templateUrl: './user-messages.component.html',
+  styleUrls: ['./user-messages.component.css']
 })
-export class MemberMessagesComponent implements OnInit {
+export class UserMessagesComponent implements OnInit {
   @Input() recipientId: number;
   messages: Message[];
   newMessage: any = {};
