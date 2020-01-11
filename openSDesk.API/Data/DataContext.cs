@@ -52,13 +52,13 @@ namespace openSDesk.API.Data
             modelBuilder.Entity<UserGroupAssingment>()
                 .HasOne(ugf => ugf.User)
                 .WithMany(u => u.Groups)
-                .HasForeignKey(ugf => ugf.UserGroupId)
+                .HasForeignKey(ugf => ugf.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<UserGroupAssingment>()
                 .HasOne(ugf => ugf.UserGroup)
                 .WithMany(g => g.Users)
-                .HasForeignKey(ugf => ugf.UserId)
+                .HasForeignKey(ugf => ugf.UserGroupId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

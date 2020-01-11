@@ -187,72 +187,6 @@ namespace openSDesk.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tickets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Location = table.Column<string>(nullable: true),
-                    Summary = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Priority = table.Column<int>(nullable: false),
-                    Type = table.Column<int>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    ResolvedAt = table.Column<DateTime>(nullable: true),
-                    ClosedAt = table.Column<DateTime>(nullable: true),
-                    InvoicedAt = table.Column<DateTime>(nullable: true),
-                    ModifiedAt = table.Column<DateTime>(nullable: false),
-                    NotificationSentAt = table.Column<DateTime>(nullable: true),
-                    Deleted = table.Column<bool>(nullable: false),
-                    SourceId = table.Column<int>(nullable: false),
-                    StatusId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
-                    RequesterId = table.Column<int>(nullable: false),
-                    AssignmentGroupId = table.Column<int>(nullable: false),
-                    AssignedToId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tickets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Tickets_Users_AssignedToId",
-                        column: x => x.AssignedToId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Tickets_UserGroups_AssignmentGroupId",
-                        column: x => x.AssignmentGroupId,
-                        principalTable: "UserGroups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Tickets_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Tickets_Users_RequesterId",
-                        column: x => x.RequesterId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Tickets_Sources_SourceId",
-                        column: x => x.SourceId,
-                        principalTable: "Sources",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Tickets_Statuses_StatusId",
-                        column: x => x.StatusId,
-                        principalTable: "Statuses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserGroupAssingments",
                 columns: table => new
                 {
@@ -263,15 +197,15 @@ namespace openSDesk.API.Migrations
                 {
                     table.PrimaryKey("PK_UserGroupAssingments", x => new { x.UserId, x.UserGroupId });
                     table.ForeignKey(
-                        name: "FK_UserGroupAssingments_Users_UserGroupId",
+                        name: "FK_UserGroupAssingments_UserGroups_UserGroupId",
                         column: x => x.UserGroupId,
-                        principalTable: "Users",
+                        principalTable: "UserGroups",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_UserGroupAssingments_UserGroups_UserId",
+                        name: "FK_UserGroupAssingments_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "UserGroups",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -296,6 +230,79 @@ namespace openSDesk.API.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tickets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Location = table.Column<string>(nullable: true),
+                    Summary = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Priority = table.Column<int>(nullable: false),
+                    Type = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    ResolvedAt = table.Column<DateTime>(nullable: true),
+                    ClosedAt = table.Column<DateTime>(nullable: true),
+                    InvoicedAt = table.Column<DateTime>(nullable: true),
+                    ModifiedAt = table.Column<DateTime>(nullable: false),
+                    NotificationSentAt = table.Column<DateTime>(nullable: true),
+                    Deleted = table.Column<bool>(nullable: false),
+                    SourceId = table.Column<int>(nullable: false),
+                    StatusId = table.Column<int>(nullable: false),
+                    SubStatusId = table.Column<int>(nullable: true),
+                    CategoryId = table.Column<int>(nullable: false),
+                    RequesterId = table.Column<int>(nullable: false),
+                    AssignmentGroupId = table.Column<int>(nullable: true),
+                    AssignedToId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tickets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Users_AssignedToId",
+                        column: x => x.AssignedToId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Tickets_UserGroups_AssignmentGroupId",
+                        column: x => x.AssignmentGroupId,
+                        principalTable: "UserGroups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Users_RequesterId",
+                        column: x => x.RequesterId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Sources_SourceId",
+                        column: x => x.SourceId,
+                        principalTable: "Sources",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Statuses_StatusId",
+                        column: x => x.StatusId,
+                        principalTable: "Statuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tickets_SubStatuses_SubStatusId",
+                        column: x => x.SubStatusId,
+                        principalTable: "SubStatuses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -479,6 +486,11 @@ namespace openSDesk.API.Migrations
                 column: "StatusId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tickets_SubStatusId",
+                table: "Tickets",
+                column: "SubStatusId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserGroupAssingments_UserGroupId",
                 table: "UserGroupAssingments",
                 column: "UserGroupId");
@@ -502,9 +514,6 @@ namespace openSDesk.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Resolutions");
-
-            migrationBuilder.DropTable(
-                name: "SubStatuses");
 
             migrationBuilder.DropTable(
                 name: "Surveys");
@@ -535,6 +544,9 @@ namespace openSDesk.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sources");
+
+            migrationBuilder.DropTable(
+                name: "SubStatuses");
 
             migrationBuilder.DropTable(
                 name: "Statuses");

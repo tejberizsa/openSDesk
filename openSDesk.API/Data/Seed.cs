@@ -33,6 +33,7 @@ namespace openSDesk.API.Data
 
                     _context.Users.Add(user);
                 }
+                _context.SaveChanges();
                 
                 // seed initial user group
                 var groupData = System.IO.File.ReadAllText("Data/SeedData/UserGroupData.json");
@@ -41,6 +42,7 @@ namespace openSDesk.API.Data
                 {
                     _context.UserGroups.Add(group);
                 }
+                _context.SaveChanges();
 
                 // seed initial user assignment to group
                 var assignmentData = System.IO.File.ReadAllText("Data/SeedData/UserGroupAssignmentData.json");

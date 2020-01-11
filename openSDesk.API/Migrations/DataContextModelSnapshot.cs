@@ -244,9 +244,9 @@ namespace openSDesk.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AssignedToId");
+                    b.Property<int?>("AssignedToId");
 
-                    b.Property<int>("AssignmentGroupId");
+                    b.Property<int?>("AssignmentGroupId");
 
                     b.Property<int>("CategoryId");
 
@@ -276,6 +276,8 @@ namespace openSDesk.API.Migrations
 
                     b.Property<int>("StatusId");
 
+                    b.Property<int?>("SubStatusId");
+
                     b.Property<string>("Summary");
 
                     b.Property<int>("Type");
@@ -293,6 +295,8 @@ namespace openSDesk.API.Migrations
                     b.HasIndex("SourceId");
 
                     b.HasIndex("StatusId");
+
+                    b.HasIndex("SubStatusId");
 
                     b.ToTable("Tickets");
                 });
@@ -457,8 +461,7 @@ namespace openSDesk.API.Migrations
 
                     b.HasOne("openSDesk.API.Models.UserGroup", "AssignmentGroup")
                         .WithMany("TicketsAssigned")
-                        .HasForeignKey("AssignmentGroupId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("AssignmentGroupId");
 
                     b.HasOne("openSDesk.API.Models.Category", "Category")
                         .WithMany()
@@ -479,17 +482,21 @@ namespace openSDesk.API.Migrations
                         .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("openSDesk.API.Models.SubStatus", "SubStatus")
+                        .WithMany()
+                        .HasForeignKey("SubStatusId");
                 });
 
             modelBuilder.Entity("openSDesk.API.Models.UserGroupAssingment", b =>
                 {
-                    b.HasOne("openSDesk.API.Models.User", "User")
-                        .WithMany("Groups")
+                    b.HasOne("openSDesk.API.Models.UserGroup", "UserGroup")
+                        .WithMany("Users")
                         .HasForeignKey("UserGroupId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("openSDesk.API.Models.UserGroup", "UserGroup")
-                        .WithMany("Users")
+                    b.HasOne("openSDesk.API.Models.User", "User")
+                        .WithMany("Groups")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

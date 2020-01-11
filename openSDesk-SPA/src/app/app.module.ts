@@ -9,7 +9,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { TimeagoModule, TimeagoFormatter, TimeagoIntl, TimeagoCustomFormatter } from 'ngx-timeago';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxEditorModule } from 'ngx-editor';
-import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
+// import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FacebookModule } from 'ngx-facebook';
 
@@ -34,29 +34,29 @@ import { PolicyComponent } from './policy/policy.component';
 import { environment } from 'src/environments/environment';
 import { UserConfirmComponent } from './user/user-confirm/user-confirm.component';
 
-
-const cookieConfig: NgcCookieConsentConfig = {
-   cookie: {
-     domain: environment.domain
-   },
-   palette: {
-     popup: {
-       background: '#000'
-     },
-     button: {
-       background: '#f1d600'
-     }
-   },
-   theme: 'classic',
-   type: 'info',
-   'content': {
-      'message': 'A weboldalon cookie-kat használok annak érdekében, hogy a lehető legjobb felhasználói élményt nyújtsam.',
-      'dismiss': 'OK, elfogadom',
-      'deny': 'Refuse cookies',
-      'link': 'Bővebben az adatvédelemről',
-      'href': 'http://openSDesk.hu/policy',
-      'policy': 'Adatvédelmi irányelvek' }
- };
+// to use cookie banner uncomment implementation is app.module.ts and app.component.ts
+// const cookieConfig: NgcCookieConsentConfig = {
+//    cookie: {
+//      domain: environment.domain
+//    },
+//    palette: {
+//      popup: {
+//        background: '#000'
+//      },
+//      button: {
+//        background: '#f1d600'
+//      }
+//    },
+//    theme: 'classic',
+//    type: 'info',
+//    'content': {
+//       'message': 'We use cookies and other tracking technologies to improve your browsing experience on our website.',
+//       'dismiss': 'I agree',
+//       'deny': 'Refuse',
+//       'link': 'Learn more',
+//       'href': 'http://openSDesk.hu/policy',
+//       'policy': 'Privacy policies' }
+//  };
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -93,7 +93,7 @@ export class MyIntl extends TimeagoIntl {
          NgxEditorModule,
          PaginationModule.forRoot(),
          FacebookModule.forRoot(),
-         NgcCookieConsentModule.forRoot(cookieConfig),
+         // NgcCookieConsentModule.forRoot(cookieConfig),
          TimeagoModule.forRoot({
             intl: { provide: TimeagoIntl, useClass: MyIntl },
             formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },

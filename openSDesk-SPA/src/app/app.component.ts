@@ -21,7 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private revokeChoiceSubscription: Subscription;
   private noCookieLawSubscription: Subscription;
 
-  constructor(private authService: AuthService, intl: TimeagoIntl, private ccService: NgcCookieConsentService) {
+  constructor(private authService: AuthService, intl: TimeagoIntl) { // , private ccService: NgcCookieConsentService
     intl.strings = hunStrings;
     intl.changes.next();
   }
@@ -31,44 +31,48 @@ export class AppComponent implements OnInit, OnDestroy {
     if (token) {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
     }
-    this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(
-      () => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    // this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(
+    //   () => {
+    //     // you can use this.ccService.getConfig() to do stuff...
+    //   });
 
-    this.popupCloseSubscription = this.ccService.popupClose$.subscribe(
-      () => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    // this.popupCloseSubscription = this.ccService.popupClose$.subscribe(
+    //   () => {
+    //     // you can use this.ccService.getConfig() to do stuff...
+    //   });
 
-    this.initializeSubscription = this.ccService.initialize$.subscribe(
-      (event: NgcInitializeEvent) => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    // this.initializeSubscription = this.ccService.initialize$.subscribe(
+    //   (event: NgcInitializeEvent) => {
+    //     // you can use this.ccService.getConfig() to do stuff...
+    //   });
 
-    this.statusChangeSubscription = this.ccService.statusChange$.subscribe(
-      (event: NgcStatusChangeEvent) => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    // this.statusChangeSubscription = this.ccService.statusChange$.subscribe(
+    //   (event: NgcStatusChangeEvent) => {
+    //     // you can use this.ccService.getConfig() to do stuff...
+    //   });
 
-    this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(
-      () => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    // this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(
+    //   () => {
+    //     // you can use this.ccService.getConfig() to do stuff...
+    //   });
 
-      this.noCookieLawSubscription = this.ccService.noCookieLaw$.subscribe(
-      (event: NgcNoCookieLawEvent) => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    //   this.noCookieLawSubscription = this.ccService.noCookieLaw$.subscribe(
+    //   (event: NgcNoCookieLawEvent) => {
+    //     // you can use this.ccService.getConfig() to do stuff...
+    //   });
   }
 
   ngOnDestroy() {
     // unsubscribe to cookieconsent observables to prevent memory leaks
-    this.popupOpenSubscription.unsubscribe();
-    this.popupCloseSubscription.unsubscribe();
-    this.initializeSubscription.unsubscribe();
-    this.statusChangeSubscription.unsubscribe();
-    this.revokeChoiceSubscription.unsubscribe();
-    this.noCookieLawSubscription.unsubscribe();
+    // this.popupOpenSubscription.unsubscribe();
+    // this.popupCloseSubscription.unsubscribe();
+    // this.initializeSubscription.unsubscribe();
+    // this.statusChangeSubscription.unsubscribe();
+    // this.revokeChoiceSubscription.unsubscribe();
+    // this.noCookieLawSubscription.unsubscribe();
+  }
+
+  loggedIn() {
+    return this.authService.loggedIn();
   }
 }

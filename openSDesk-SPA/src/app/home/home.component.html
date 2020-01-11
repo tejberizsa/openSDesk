@@ -1,26 +1,40 @@
-<div *ngIf="!loggedIn()">
+<div *ngIf="!loggedIn()" class="loginScreen">
+  <div class="wrapper fadeInDown formContent">
 
-  <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login()">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="username" class="sr-only">Email address</label>
-    <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus="" [(ngModel)]="model.username">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required [(ngModel)]="model.password">
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">© 2020 - OpenServiceDesk</p>
-  </form>
-<!-- <div *ngIf="!loggedIn()">
-      <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
-        <input class="form-control mr-sm-2" type="text" name="username" 
-          placeholder="Felhasználó" required [(ngModel)]="model.username">
-        <input class="form-control mr-sm-2" type="password" name="password" 
-          placeholder="Jelszó" required [(ngModel)]="model.password">
-        <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Bejelentkezek</button>
-        <button *ngIf="!loggedIn()" [routerLink]="['/register']" class="btn btn-info my-2 my-sm-0 ml-2" type="button">Regisztrálok</button>
+  <div class="loginCard">
+    
+    <div class="fadeIn first">
+      
+      <div class="loginHeader">
+
+        <h1 class="lead text-white font-weight-bold"><i class="fa fa-cogs fa-4x" aria-hidden="true"></i> <span class="logoSpan">openSDesk</span></h1>
+        <h2 class="lead text-white mt-4">Welcome to openSDesk</h2>
+      </div>
+
+      <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login()">
+        <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
+        <label for="username" class="sr-only">Email address</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus="" [(ngModel)]="model.username">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required [(ngModel)]="model.password">
+        <button class="btn btn-lg btn-primary btn-block signInBtn" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">© 2020 - OpenServiceDesk</p>
       </form>
-    </div> -->
+    <!-- <div *ngIf="!loggedIn()">
+          <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+            <input class="form-control mr-sm-2" type="text" name="username" 
+              placeholder="Felhasználó" required [(ngModel)]="model.username">
+            <input class="form-control mr-sm-2" type="password" name="password" 
+              placeholder="Jelszó" required [(ngModel)]="model.password">
+            <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Bejelentkezek</button>
+            <button *ngIf="!loggedIn()" [routerLink]="['/register']" class="btn btn-info my-2 my-sm-0 ml-2" type="button">Regisztrálok</button>
+          </form>
+        </div> -->
 
 
+      </div>
+    </div>
+  </div>
 </div>
 <div *ngIf="loggedIn()" class="d-flex justify-content-center">
     <pagination [boundaryLinks]="true" 

@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import '../node_modules/bootswatch/dist/flatly/bootstrap.min.css';
+@import '../node_modules/bootswatch/dist/materia/bootstrap.min.css';
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
@@ -52,8 +52,14 @@
   }
 
   body {
-    background-color: #f1f1f1;
+    background-color: #f0f0f0;
   }
+
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+}
 
   .ngx-editor-textarea {
     background-color: #ffffff !important;
