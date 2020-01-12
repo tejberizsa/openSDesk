@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-nav',
@@ -12,26 +13,20 @@ export class NavComponent implements OnInit {
   model: any = {};
   isCollapsed = true;
 
-  constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService,
+    private router: Router, private elem: ElementRef) { }
 
   ngOnInit() {}
 
-  login() {
-    this.authService.login(this.model).subscribe(next => {
-      this.alertify.success('Sikeresen bejelentkeztél');
-      this.router.navigate(['/home']);
-    }, error => {
-      this.alertify.error(error);
-    });
-  }
-
-  loggedIn() {
-    return this.authService.loggedIn();
+  onClick(e) {
+    const elements = Array.from(document.querySelectorAll('a.nav-link'));
+    elements.forEach(elem => elem.classList.remove('text-info'));
+    e.target.classList.add('text-info');
   }
 
   logout() {
     localStorage.removeItem('token');
-    this.alertify.message('Kijelentkezve');
+    this.alertify.message('Signed out');
     this.router.navigate(['/home']);
   }
 }

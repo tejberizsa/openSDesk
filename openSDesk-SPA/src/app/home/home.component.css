@@ -208,6 +208,22 @@
   
   /* FORM TYPOGRAPHY*/
   
+
+  .loginCard {
+    margin-top: 42px !important;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .signInBtn {
+    margin-top: 14px;
+    max-width: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   input[type=button], input[type=submit], input[type=reset]  {
     background-color: #56baed;
     border: none;
@@ -229,21 +245,6 @@
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-  }
-
-  .loginCard {
-    margin-top: 42px !important;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .signInBtn {
-    margin-top: 14px;
-    max-width: 50%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
   }
   
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {

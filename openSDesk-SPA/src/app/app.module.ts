@@ -33,6 +33,8 @@ import { UserPhotoEditorComponent } from './user/user-photo-editor/user-photo-ed
 import { PolicyComponent } from './policy/policy.component';
 import { environment } from 'src/environments/environment';
 import { UserConfirmComponent } from './user/user-confirm/user-confirm.component';
+import { TicketAddComponent } from './ticket/ticketAdd/ticketAdd.component';
+import { TicketDetailComponent } from './ticket/ticketDetail/ticketDetail.component';
 
 // to use cookie banner uncomment implementation is app.module.ts and app.component.ts
 // const cookieConfig: NgcCookieConsentConfig = {
@@ -77,7 +79,9 @@ export class MyIntl extends TimeagoIntl {
          UserMessagesComponent,
          UserPhotoEditorComponent,
          PolicyComponent,
-         UserConfirmComponent
+         UserConfirmComponent,
+         TicketAddComponent,
+         TicketDetailComponent
       ],
       imports: [
          [ BrowserModule, CollapseModule.forRoot()],
