@@ -11,7 +11,6 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { NgxEditorModule } from 'ngx-editor';
 // import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FacebookModule } from 'ngx-facebook';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -35,6 +34,8 @@ import { environment } from 'src/environments/environment';
 import { UserConfirmComponent } from './user/user-confirm/user-confirm.component';
 import { TicketAddComponent } from './ticket/ticketAdd/ticketAdd.component';
 import { TicketDetailComponent } from './ticket/ticketDetail/ticketDetail.component';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
 
 // to use cookie banner uncomment implementation is app.module.ts and app.component.ts
 // const cookieConfig: NgcCookieConsentConfig = {
@@ -96,7 +97,6 @@ export class MyIntl extends TimeagoIntl {
          FileUploadModule,
          NgxEditorModule,
          PaginationModule.forRoot(),
-         FacebookModule.forRoot(),
          // NgcCookieConsentModule.forRoot(cookieConfig),
          TimeagoModule.forRoot({
             intl: { provide: TimeagoIntl, useClass: MyIntl },
@@ -117,7 +117,9 @@ export class MyIntl extends TimeagoIntl {
          AuthGuard,
          RegisterGuard,
          UserService,
-         MessagesResolver
+         MessagesResolver,
+         UserDetailResolver,
+         UserEditResolver
       ],
       bootstrap: [
          AppComponent

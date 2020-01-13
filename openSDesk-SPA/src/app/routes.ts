@@ -7,6 +7,10 @@ import { RegisterGuard } from './_guards/register.guard';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { UserConfirmComponent } from './user/user-confirm/user-confirm.component';
 import { PolicyComponent } from './policy/policy.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
+import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -18,7 +22,9 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            { path: 'messages', component: MessagesComponent, resolve: { messages: MessagesResolver } }
+            { path: 'messages', component: MessagesComponent, resolve: { messages: MessagesResolver } },
+            { path: 'user/edit', component: UserEditComponent, resolve: { user: UserEditResolver } },
+            { path: 'user/:id', component: UserDetailComponent, resolve: { user: UserDetailResolver } }
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'}
