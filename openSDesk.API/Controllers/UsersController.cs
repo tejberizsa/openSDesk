@@ -8,6 +8,7 @@ using openSDesk.API.Dtos;
 using openSDesk.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace openSDesk.API.Controllers
 {
@@ -19,11 +20,12 @@ namespace openSDesk.API.Controllers
     {
         private readonly IApplicationRepository _repo;
         private readonly IMapper _mapper;
-        public UsersController(IApplicationRepository repo, IMapper mapper)
+        public IConfiguration Configuration { get; }
+        public UsersController(IApplicationRepository repo, IMapper mapper, IConfiguration configuration)
         {
             _mapper = mapper;
             _repo = repo;
-
+            Configuration = configuration;
         }
 
         [HttpGet]
@@ -43,6 +45,11 @@ namespace openSDesk.API.Controllers
             var user = await _repo.GetUser(id);
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
+
+            if(String.IsNullOrEmpty(userToReturn.PhotoUrl))
+            {
+                userToReturn.PhotoUrl = $"{Configuration.GetSection("AppSettings:Domain").Value}/api/users/{id}/photos/link/default";
+            }
 
             return Ok(userToReturn);
         }

@@ -8,29 +8,29 @@
         <img src="{{user.photoUrl}}" alt="{{user.username}}" class="card-img-top img-thumbnail">
         <div class="card-body">
           <div>
-            <strong>Utoljára bejelentkezett:</strong>
+            <strong>Last login:</strong>
             <p>{{user.lastActive | timeago}}</p>
           </div>
           <div>
-            <strong>Regisztráció időpontja:</strong>
+            <strong>Registered:</strong>
             <p>{{user.registrationDate | timeago}}</p>
           </div>
         </div>
         <div class="card-footer">
           <div class="btn-group d-flex">
-            <button class="btn btn-success w-100" (click)="selectTab(4)">Üzenet</button>
+            <button class="btn btn-success w-100" (click)="selectTab(4)">Messages</button>
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
-      <div class="tab-panel">
+      <div class="tab-panel card">
         <tabset class="member-tabset" #memberTabs>
-          <tab heading="Névjegy">
+          <tab heading="Profile">
             <p>{{user.introduction}}</p>
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>
-          <tab heading="Üzenet">
+          <tab heading="Chat">
             <app-user-messages [recipientId]="user.id"></app-user-messages>
           </tab>
         </tabset>

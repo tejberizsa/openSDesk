@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
     <div *ngIf="messages?.length == 0">
-      <p>Még nincsenek üzenetek...</p>
+      <p>No messages...</p>
     </div>
 
     <ul class="chat">
@@ -30,8 +30,8 @@
             <div class="header">
                 <small class="text-muted">
                     <span class="fa fa-clock-o">{{message.messageSent | timeago}}</span>
-                    <span *ngIf="!message.isRead" class="text-danger">(olvasatlan)</span>
-                    <span *ngIf="message.isRead" class="text-success">(elolvasva {{message.dateRead | timeago}})</span>
+                    <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
+                    <span *ngIf="message.isRead" class="text-success">(read {{message.dateRead | timeago}})</span>
                   </small>
               <strong class="primary-font float-right">{{message.senderUsername}}</strong>
             </div>
@@ -48,10 +48,10 @@
 
         <input [(ngModel)]="newMessage.content" type="text" 
         name="content" required
-        class="form-control input-sm" placeholder="privát üzenet">
+        class="form-control input-sm" placeholder="private message">
 
         <div class="input-group-append">
-          <button class="btn btn-primary" [disabled]="!messageForm.valid">Küldés</button>
+          <button class="btn btn-primary" [disabled]="!messageForm.valid">Send</button>
         </div>
       </div>
     </form>

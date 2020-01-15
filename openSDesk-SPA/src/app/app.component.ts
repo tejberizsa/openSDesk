@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from './_services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TimeagoIntl } from 'ngx-timeago';
-import {strings as hunStrings} from 'ngx-timeago/language-strings/hu';
+import {strings as langStrings} from 'ngx-timeago/language-strings/en';
 import { Subscription } from 'rxjs';
 import { NgcCookieConsentService, NgcInitializeEvent, NgcStatusChangeEvent, NgcNoCookieLawEvent } from 'ngx-cookieconsent';
 
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private noCookieLawSubscription: Subscription;
 
   constructor(private authService: AuthService, intl: TimeagoIntl) { // , private ccService: NgcCookieConsentService
-    intl.strings = hunStrings;
+    intl.strings = langStrings;
     intl.changes.next();
   }
 

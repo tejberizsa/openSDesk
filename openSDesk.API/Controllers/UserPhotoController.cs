@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
+using Microsoft.Extensions.Configuration;
 
 namespace openSDesk.API.Controllers
 {
@@ -22,11 +23,12 @@ namespace openSDesk.API.Controllers
     {
         private readonly IApplicationRepository _repo;
         private readonly IMapper _mapper;
-        public UserPhotoController(IApplicationRepository repo, IMapper mapper)
+        public IConfiguration Configuration { get; }
+        public UserPhotoController(IApplicationRepository repo, IMapper mapper, IConfiguration configuration)
         {
             _mapper = mapper;
             _repo = repo;
-
+            Configuration = configuration;
         }
 
         [HttpGet("{id}", Name = "GetUserPhoto")]
@@ -49,7 +51,7 @@ namespace openSDesk.API.Controllers
             var userFromRepo = await _repo.GetUser(userId);
 
             var file = photoForCreationDto.File;
-            var path = $"C:\\UserPhotos\\";
+            var path = $"{Configuration.GetSection("AppSettings:AppStorage").Value}";
             var filename = $"{userId}_{DateTime.Now.ToString("yyMMddHHmmssff")}";
             var extension = ".jpg";
 
@@ -65,7 +67,7 @@ namespace openSDesk.API.Controllers
                 }
             }
             
-            photoForCreationDto.Url = $"https://ittfelteheted.hu/api/users/{userId}/photos/link/{filename}";
+            photoForCreationDto.Url = $"{Configuration.GetSection("AppSettings:Domain").Value}/api/users/{userId}/photos/link/{filename}";
             var photo = _mapper.Map<UserPhoto>(photoForCreationDto);
 
             if (!userFromRepo.Photos.Any(u => u.IsMain))
@@ -79,14 +81,14 @@ namespace openSDesk.API.Controllers
                 return CreatedAtRoute("GetUserPhoto", new { id = photo.Id }, photoToReturn);
             }
 
-            return BadRequest("Fénykép feltöltés nem sikerült");
+            return BadRequest("Failed to upload");
         }
 
         [HttpGet("link/{url}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetPhoto(string url)
         {
-            var path = $"C:\\UserPhotos\\";
+            var path = $"{Configuration.GetSection("AppSettings:AppStorage").Value}";
             var extension = ".jpg";
             var image = await Task.Run(() => System.IO.File.OpenRead(path + url + extension));
             return File(image, "image/jpeg");
@@ -107,7 +109,7 @@ namespace openSDesk.API.Controllers
             var photoFromRepo = await _repo.GetUserPhoto(id);
 
             if (photoFromRepo.IsMain)
-                return BadRequest("Már ez az elsődleges fényképed");
+                return BadRequest("Already primary");
             
             var currentMainPhoto = await _repo.GetMainPhotoForUser(userId);
             currentMainPhoto.IsMain = false;
@@ -116,7 +118,7 @@ namespace openSDesk.API.Controllers
             if (await _repo.SaveAll())
                 return NoContent();
 
-            return BadRequest("Sikertelen, nem ez lett az elsődleges képed");
+            return BadRequest("Failed to set primary photo");
         }
 
         [HttpDelete("{id}")]
@@ -133,9 +135,9 @@ namespace openSDesk.API.Controllers
             var photoFromRepo = await _repo.GetUserPhoto(id);
 
             if (photoFromRepo.IsMain)
-                return BadRequest("Ez az elsődleges profilképed");
+                return BadRequest("This is primary");
 
-            var path = $"C:\\UserPhotos\\";
+            var path = $"{Configuration.GetSection("AppSettings:AppStorage").Value}";
             var extension = ".jpg";
             var fileName = photoFromRepo.Url.Split("/").Last();
             await Task.Run(() => System.IO.File.Delete(path + fileName + extension));
@@ -145,7 +147,7 @@ namespace openSDesk.API.Controllers
             if (await _repo.SaveAll())
                 return Ok();
 
-            return BadRequest("Kép törlése nem sikerült");
+            return BadRequest("Failed to delete");
         }
     }
 }
