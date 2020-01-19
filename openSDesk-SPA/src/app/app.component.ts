@@ -3,8 +3,8 @@ import { AuthService } from './_services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TimeagoIntl } from 'ngx-timeago';
 import {strings as langStrings} from 'ngx-timeago/language-strings/en';
-import { Subscription } from 'rxjs';
-import { NgcCookieConsentService, NgcInitializeEvent, NgcStatusChangeEvent, NgcNoCookieLawEvent } from 'ngx-cookieconsent';
+// import { Subscription } from 'rxjs';
+// import { NgcCookieConsentService, NgcInitializeEvent, NgcStatusChangeEvent, NgcNoCookieLawEvent } from 'ngx-cookieconsent';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +14,12 @@ import { NgcCookieConsentService, NgcInitializeEvent, NgcStatusChangeEvent, NgcN
 export class AppComponent implements OnInit, OnDestroy {
   jwtHelper = new JwtHelperService();
   title = 'openSDesk.hu';
-  private popupOpenSubscription: Subscription;
-  private popupCloseSubscription: Subscription;
-  private initializeSubscription: Subscription;
-  private statusChangeSubscription: Subscription;
-  private revokeChoiceSubscription: Subscription;
-  private noCookieLawSubscription: Subscription;
+  // private popupOpenSubscription: Subscription;
+  // private popupCloseSubscription: Subscription;
+  // private initializeSubscription: Subscription;
+  // private statusChangeSubscription: Subscription;
+  // private revokeChoiceSubscription: Subscription;
+  // private noCookieLawSubscription: Subscription;
 
   constructor(private authService: AuthService, intl: TimeagoIntl) { // , private ccService: NgcCookieConsentService
     intl.strings = langStrings;

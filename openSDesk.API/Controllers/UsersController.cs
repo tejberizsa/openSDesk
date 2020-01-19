@@ -46,10 +46,10 @@ namespace openSDesk.API.Controllers
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
 
-            if(String.IsNullOrEmpty(userToReturn.PhotoUrl))
-            {
-                userToReturn.PhotoUrl = $"{Configuration.GetSection("AppSettings:Domain").Value}/api/users/{id}/photos/link/default";
-            }
+            // if(String.IsNullOrEmpty(userToReturn.PhotoUrl))
+            // {
+            //     userToReturn.PhotoUrl = $"{Configuration.GetSection("AppSettings:Domain").Value}/api/users/{id}/photos/link/default";
+            // }
 
             return Ok(userToReturn);
         }

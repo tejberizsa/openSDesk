@@ -23,7 +23,6 @@ import { MessagesComponent } from './messages/messages.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { RegisterGuard } from './_guards/register.guard';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserService } from './_services/user.service';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { MessagesResolver } from './_resolvers/messages.resolver';
@@ -36,6 +35,7 @@ import { TicketAddComponent } from './ticket/ticketAdd/ticketAdd.component';
 import { TicketDetailComponent } from './ticket/ticketDetail/ticketDetail.component';
 import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
 // to use cookie banner uncomment implementation is app.module.ts and app.component.ts
 // const cookieConfig: NgcCookieConsentConfig = {
@@ -75,14 +75,14 @@ export class MyIntl extends TimeagoIntl {
          HomeComponent,
          RegisterComponent,
          MessagesComponent,
-         UserDetailComponent,
          UserEditComponent,
          UserMessagesComponent,
          UserPhotoEditorComponent,
          PolicyComponent,
          UserConfirmComponent,
          TicketAddComponent,
-         TicketDetailComponent
+         TicketDetailComponent,
+         UserDetailComponent
       ],
       imports: [
          [ BrowserModule, CollapseModule.forRoot()],

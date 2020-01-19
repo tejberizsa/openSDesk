@@ -59,5 +59,4 @@ export class UserDetailComponent implements OnInit {
   selectTab(tabId: number) {
     this.memberTabs.tabs[tabId].active = true;
   }
-
 }

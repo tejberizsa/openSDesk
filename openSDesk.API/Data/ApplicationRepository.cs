@@ -34,6 +34,7 @@ namespace openSDesk.API.Data
         public async Task<User> GetUser(int id)
         {
             var user = await _context.Users
+                                        .Include(u => u.Photos)
                                         .FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }

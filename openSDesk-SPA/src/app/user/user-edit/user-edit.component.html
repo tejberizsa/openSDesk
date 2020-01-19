@@ -2,9 +2,6 @@
   <div class="row">
     <h3 class="col-4">Profile</h3>
   <div class="col-8">
-    <div *ngIf="editForm.dirty" class="alert alert-info">
-      <strong>Important, </strong>save to keep updates.
-    </div>
   </div>
   </div>
   <div class="row">
@@ -39,6 +36,9 @@
             <app-user-photo-editor [photos]="user.photos" (getMemberPhotoChange)="updateMainPhoto($event)"></app-user-photo-editor>
           </tab>
         </tabset>
+      </div>
+      <div *ngIf="editForm.dirty" class="alert alert-info mt-4">
+        <strong>Save, </strong>to keep changes.
       </div>
     </div>
   </div>
