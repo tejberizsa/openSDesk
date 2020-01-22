@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {}
+    "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {}
   },
   "projects": {
-    "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {
+    "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+        "projectUniqueName": "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
         "projectName": "openSDesk.API",
-        "projectPath": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+        "projectPath": "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
         "packagesPath": "C:\\Users\\nvarga\\.nuget\\packages\\",
-        "outputPath": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\obj\\",
+        "outputPath": "c:\\JesusSaves\\openSDesk\\openSDesk.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -72,10 +72,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
