@@ -9,3 +9,12 @@ table {
 td {
     vertical-align: middle;
 }
+
+.btn-message {
+    min-width: 144px;
+    font-weight: bolder;
+}
+
+.header-no-message {
+    margin-top: 18px;
+}

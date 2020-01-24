@@ -1,0 +1,54 @@
+[
+    {
+      "Text": "Assigned"
+    },
+    {
+      "Text": "Work in Progress"
+    },
+    {
+      "Text": "Pending",
+      "SubStatuses": [
+        {
+          "Text": "Appointment Scheduled"
+        },
+        {
+          "Text": "Change Scheduled"
+        },
+        {
+          "Text": "Customer Action"
+        },
+        {
+          "Text": "Part Replacement"
+        },
+        {
+          "Text": "Vendor Action"
+        }
+      ]
+    },
+    {
+      "Text": "Resolved",
+      "SubStatuses": [
+        {
+          "Text": "No User Response"
+        },
+        {
+          "Text": "Out of Scope"
+        },
+        {
+          "Text": "Pernamently Resolved"
+        },
+        {
+          "Text": "Self Recovery"
+        },
+        {
+          "Text": "Unresolvable"
+        },
+        {
+          "Text": "Workaround"
+        },
+        {
+          "Text": "Working as Designed"
+        }
+      ]
+    }
+]

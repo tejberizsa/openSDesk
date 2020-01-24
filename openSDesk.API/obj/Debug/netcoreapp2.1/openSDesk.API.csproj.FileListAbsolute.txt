@@ -4,7 +4,6 @@ C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\openSDesk.API.runt
 C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\openSDesk.API.dll
 C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\openSDesk.API.pdb
 C:\JesusSaves\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.csprojAssemblyReference.cache
-C:\JesusSaves\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.csproj.CoreCompileInputs.cache
 C:\JesusSaves\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.RazorAssemblyInfo.cache
 C:\JesusSaves\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.RazorAssemblyInfo.cs
 C:\JesusSaves\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.AssemblyInfoInputs.cache
@@ -26,3 +25,13 @@ E:\work\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.AssemblyIn
 E:\work\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.RazorTargetAssemblyInfo.cache
 E:\work\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.dll
 E:\work\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.pdb
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\appsettings.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\ResolutionCodeData.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\SourceData.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\StatusData.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\SurveyResponseData.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserGroupAssignmentData.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserGroupData.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserSeedData.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Properties\launchSettings.json

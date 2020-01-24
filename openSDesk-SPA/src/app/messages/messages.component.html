@@ -1,28 +1,28 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="btn-group">
-      <button class="btn btn-primary text-info" btnRadio="Unread" (click)="loadMessages('Unread')">
-        <i class="fa fa-envelope"></i> Olvasatlan
+    <div class="btn-group btn-group-messages">
+      <button class="btn btn-primary btn-message text-info" btnRadio="Unread" (click)="loadMessages('Unread')">
+        <i class="fa fa-envelope"></i> Unread
       </button>
-      <button class="btn btn-primary text-warning" btnRadio="Inbox" (click)="loadMessages('Inbox')">
-        <i class="fa fa-envelope-open"></i> Beérkező
+      <button class="btn btn-primary btn-message" btnRadio="Inbox" (click)="loadMessages('Inbox')">
+        <i class="fa fa-envelope-open"></i> Inbox
       </button>
-      <button class="btn btn-primary text-success" btnRadio="Outbox" (click)="loadMessages('Outbox')">
-        <i class="fa fa-paper-plane"></i> Elküldött
+      <button class="btn btn-primary btn-message" btnRadio="Outbox" (click)="loadMessages('Outbox')">
+        <i class="fa fa-paper-plane"></i> Outbox
       </button>
     </div>
   </div>
 
-  <div class="row" *ngIf="messages.length == 0">
-    <h3>Még nincs üzeneted :-(</h3>
+  <div class="row header-no-message" *ngIf="messages.length == 0">
+    <h3>You have not get messages yet :-(</h3>
   </div>
 
   <div class="row" *ngIf="messages.length > 0">
     <table class="table table-hover" style="cursor: pointer">
       <tr>
-        <th style="width: 40%">Üzenet</th>
-        <th style="width: 20%">Küldő / Címzett</th>
-        <th style="width: 20%">Küldve / Kézbesítve</th>
+        <th style="width: 40%">Message</th>
+        <th style="width: 20%">Sender / Recipient</th>
+        <th style="width: 20%">Sent / Arrived</th>
         <th style="width: 20%"></th>
       </tr>
       <tr *ngFor="let message of messages" [routerLink]="['/user', 

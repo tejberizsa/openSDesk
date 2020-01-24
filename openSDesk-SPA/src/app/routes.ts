@@ -11,6 +11,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { UserDetailResolver } from './_resolvers/user-detail.resolver';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { TicketAddComponent } from './ticket/ticketAdd/ticketAdd.component';
+import { TicketDetailComponent } from './ticket/ticketDetail/ticketDetail.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -24,7 +26,10 @@ export const appRoutes: Routes = [
         children: [
             { path: 'messages', component: MessagesComponent, resolve: { messages: MessagesResolver } },
             { path: 'user/edit', component: UserEditComponent, resolve: { user: UserEditResolver } },
-            { path: 'user/:id', component: UserDetailComponent, resolve: { user: UserDetailResolver } }
+            { path: 'user/:id', component: UserDetailComponent, resolve: { user: UserDetailResolver } },
+            { path: 'addTicket', component: TicketAddComponent },
+            { path: 'ticket/:id', component: TicketDetailComponent }
+            // { path: 'service', component: , data: {roles: ['Admin', 'Clerk']}}
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'}

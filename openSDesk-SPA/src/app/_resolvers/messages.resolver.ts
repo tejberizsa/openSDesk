@@ -20,7 +20,7 @@ export class MessagesResolver implements Resolve<Message[]> {
         return this.userService.getMessages(this.authService.decodedToken.nameid, this.pageNumber,
             this.pageSize, this.messageContainer).pipe(
             catchError(error => {
-                this.alertify.error('Adatok betöltése nem sikerült');
+                this.alertify.error('Failed to load message data');
                 this.router.navigate(['/home']);
                 return of(null);
             })

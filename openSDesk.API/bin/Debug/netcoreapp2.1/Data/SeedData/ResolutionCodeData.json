@@ -1,0 +1,101 @@
+[
+    {
+        "Text": "Access Breach"
+    },
+    {
+        "Text": "Access List Change"
+    },
+    {
+        "Text": "Access / Permissions / Accounts"
+    },
+    {
+        "Text": "Application Job Failure"
+    },
+    {
+        "Text": "Authentication Failure"
+    },
+    {
+        "Text": "Bad Query"
+    },
+    {
+        "Text": "Batch Job Failures"
+    },
+    {
+        "Text": "Bug"
+    },
+    {
+        "Text": "Capacity / Performance Issue"
+    },
+    {
+        "Text": "Caused by Release / Change"
+    },
+    {
+        "Text": "Configuration / Setting"
+    },
+    {
+        "Text": "Data Corruption"
+    },
+    {
+        "Text": "Database Job Failure"
+    },
+    {
+        "Text": "Database Offline / Unavailable"
+    },
+    {
+        "Text": "Disk / File system"
+    },
+    {
+        "Text": "False Alert"
+    },
+    {
+        "Text": "Firewall Caused Issue"
+    },
+    {
+        "Text": "License Issue"
+    },
+    {
+        "Text": "Long Running Job"
+    },
+    {
+        "Text": "Malware / Virus"
+    },
+    {
+        "Text": "OS issue"
+    },
+    {
+        "Text": "Other"
+    },
+    {
+        "Text": "Password/Profile reset"
+    },
+    {
+        "Text": "Patch Install / Rollback"
+    },
+    {
+        "Text": "Permission issue"
+    },
+    {
+        "Text": "Port Listener Config"
+    },
+    {
+        "Text": "Profile Issue"
+    },
+    {
+        "Text": "Query"
+    },
+    {
+        "Text": "Reset / Reboot"
+    },
+    {
+        "Text": "Role / Security / Permission"
+    },
+    {
+        "Text": "Scheduled Job Failure"
+    },
+    {
+        "Text": "Software"
+    },
+    {
+        "Text": "User Error"
+    }
+]

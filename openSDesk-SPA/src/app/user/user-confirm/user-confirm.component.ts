@@ -23,7 +23,7 @@ export class UserConfirmComponent implements OnInit {
 
   confirmMail() {
     this.authService.confirmEmail(this.confirm).subscribe(() => {
-      this.alertify.success('Sikeres bejelentkezés');
+      this.alertify.success('Successfully logged in');
       this.router.navigate(['/home']);
     }, error => {
       this.alertify.error(error);

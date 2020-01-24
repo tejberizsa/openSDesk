@@ -70,9 +70,9 @@ export class UserPhotoEditorComponent implements OnInit {
   deletePhoto(id: number) {
     this.userService.deletePhoto(this.authService.decodedToken.nameid, id).subscribe(() => {
       this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
-      this.alertify.success('Kép törölve');
+      this.alertify.success('Photo deleted');
     }, error => {
-      this.alertify.error('Nem sikerült a kép törlése');
+      this.alertify.error('Failed to delete photo');
     });
   }
 }

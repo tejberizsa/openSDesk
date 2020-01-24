@@ -5,6 +5,7 @@ import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-messages',
@@ -35,6 +36,13 @@ export class MessagesComponent implements OnInit {
       }, error => {
         this.alertify.error(error);
       });
+      const btnGroup = document.querySelector('.btn-group-messages');
+      Array.from(btnGroup.children)
+          .filter((btn) => btn.textContent.includes(cont))
+          .forEach((btn) => btn.classList.add('text-info'));
+      Array.from(btnGroup.children)
+          .filter((btn) => !btn.textContent.includes(cont))
+          .forEach((btn) => btn.classList.remove('text-info'));
   }
 
   deleteMessage(id: number) {
