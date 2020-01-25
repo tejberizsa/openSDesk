@@ -117,5 +117,12 @@ namespace openSDesk.API.Controllers
 
             throw new Exception($"Remove {groupToDelete.Name} group is failed on save");
         }
+
+        [HttpGet("GetCategoryList")]
+        public async Task<IActionResult> GetCategoryList()
+        {
+            var categoriesFromRepo = await _setRepo.GetCategories();
+            return Ok(categoriesFromRepo);
+        }
     }
 }

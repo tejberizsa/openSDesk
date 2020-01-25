@@ -4,9 +4,11 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Ticket } from 'src/app/_models/ticket';
 import { TicketService } from 'src/app/_services/ticket.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { FileUploader } from 'ng2-file-upload';
+import { User } from 'src/app/_models/user';
+import { Category } from 'src/app/_models/category';
 
 @Component({
   selector: 'app-ticketadd',
@@ -20,11 +22,17 @@ export class TicketAddComponent implements OnInit {
   baseUrl = environment.apiUrl;
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
+  users: User[];
+  categories: Category[];
 
   constructor(private authService: AuthService, private alertify: AlertifyService,
-    private fb: FormBuilder, private ticketService: TicketService, private router: Router) { }
+    private fb: FormBuilder, private ticketService: TicketService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.users = data['userlist'];
+      this.categories = data['categories'];
+    });
     this.createTicketForm();
     // this.ticketId = 1;
     // this.initializeUploader();
@@ -36,10 +44,10 @@ export class TicketAddComponent implements OnInit {
 
   createTicketForm() {
     this.ticketForm = this.fb.group({
-      requesterId: [],
+      requesterId: [this.authService.decodedToken.nameid],
       type: [''],
       sourceId: [''],
-      category: [''],
+      categoryId: [''],
       priority: [''],
       summary: [''],
       description: [''],

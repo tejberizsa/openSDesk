@@ -17,5 +17,6 @@ namespace openSDesk.API.Data
         Task<bool> CheckGroupExist(string groupName);
         Task<UserGroup> GetUserGroup(int groupId);
         Task<IEnumerable<UserGroupAssingment>> GetGroupAssignemntsById(int groupId);
+        Task<IEnumerable<Category>> GetCategories();
     }
 }

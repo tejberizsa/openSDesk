@@ -105,5 +105,11 @@ namespace openSDesk.API.Data
 
             return groupAssignments;
         }
+
+        public async Task<IEnumerable<Category>> GetCategories()
+        {
+            var categories = await _context.Categories.OrderBy(c => c.Text).ToListAsync();
+            return categories;
+        }
     }
 }

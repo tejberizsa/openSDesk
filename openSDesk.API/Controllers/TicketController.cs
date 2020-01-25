@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -207,6 +208,14 @@ namespace openSDesk.API.Controllers
         {
             var ticketsToReturn = await _ticketRepo.GetTicketThread(ticketParams);
             return Ok(ticketParams);
+        }
+
+        [HttpGet("GetUserList")]
+        public async Task<IActionResult> GetUserList()
+        {
+            var usersFromRepo = await _ticketRepo.GetUsers();
+            var usersToReturn = _mapper.Map<IEnumerable<UserForSelectDto>>(usersFromRepo);
+            return Ok(usersToReturn);
         }
     }
 }

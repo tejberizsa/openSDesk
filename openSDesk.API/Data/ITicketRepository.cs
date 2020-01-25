@@ -15,6 +15,7 @@ namespace openSDesk.API.Data
         Task<bool> AssignToGroup(int ticketId, int groupId);
         Task<bool> UpdateStatus(int ticketId, int statusId, int subStatusId);
         Task<bool> ResponseIsRefusal(int surveyResponseId);
+        Task<IEnumerable<User>> GetUsers();
         // Task<bool> ResolveTicket(int ticketId, Resolution resolution);
         // Task<bool> SurveyTicket(int ticketId, Survey survey);
     }

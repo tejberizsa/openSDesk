@@ -57,6 +57,7 @@ namespace openSDesk.API.Helpers
             CreateMap<SurveyForAddDto, Survey>();
             CreateMap<UserGroup, UserGroupForTicketDetailDto>();
             CreateMap<User, UserForTicketDetailDto>();
+            CreateMap<User, UserForSelectDto>();
         }
     }
 }

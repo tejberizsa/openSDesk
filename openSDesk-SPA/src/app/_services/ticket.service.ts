@@ -8,6 +8,8 @@ import { Survey } from '../_models/survey';
 import { Observable } from 'rxjs';
 import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/operators';
+import { User } from '../_models/user';
+import { Category } from '../_models/category';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,14 @@ export class TicketService {
 
   assignToUser(ticketId: number, userId: number) {
     return this.http.post(this.baseUrl + 'Ticket/' + ticketId + '/AssignToUser/' + userId, {});
+  }
+
+  getUserList(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseUrl + 'Ticket/GetUserList');
+  }
+
+  getCategoryList(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.baseUrl + 'Settings/GetCategoryList');
   }
 
   updateStatus(ticketId: number, ticket) {

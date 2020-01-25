@@ -161,5 +161,14 @@ namespace openSDesk.API.Data
             var response = await _context.SurvayResponses.FirstOrDefaultAsync(sr => sr.Id == surveyResponseId);
             return response.Refusal;
         }
+
+        public async Task<IEnumerable<User>> GetUsers()
+        {
+            var users = await _context.Users
+                                        .Where(u => u.Deleted == false)
+                                        .OrderBy(u => u.Username)
+                                        .ToListAsync();
+            return users;
+        }
     }
 }
