@@ -13,3 +13,9 @@
     background-color: #fff;
     border-top: none;
 }
+
+.card-header {
+    background-image: linear-gradient(141deg, #2196f3 10%, #2c1f7f 101%);
+    opacity: 0.65;
+    color: white;
+}

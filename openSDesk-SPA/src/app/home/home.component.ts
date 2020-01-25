@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      this.alertify.success('Sikeresen bejelentkeztél');
+      this.alertify.success('Successfully logged in');
       this.router.navigate(['/home']);
     }, error => {
       this.alertify.error(error);

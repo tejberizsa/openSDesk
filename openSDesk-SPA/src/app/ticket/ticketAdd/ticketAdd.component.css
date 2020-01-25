@@ -1,10 +1,14 @@
 .card-header {
     background-image: linear-gradient(141deg, #2196f3 10%, #2c1f7f 101%);
-    opacity: 0.95;
+    opacity: 0.65;
     color: white;
 }
 
 .card {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+#requesterHelp {
+    font-size: x-small;
 }

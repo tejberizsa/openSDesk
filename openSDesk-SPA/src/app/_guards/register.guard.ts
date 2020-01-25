@@ -14,7 +14,7 @@ export class RegisterGuard implements CanActivate {
       return true;
     }
 
-    this.alertify.error('Be vagy jelentkezve!');
+    this.alertify.error('You are logged in!');
     this.router.navigate(['/home']);
     return false;
   }

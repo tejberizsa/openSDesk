@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+  "FilePath": "e:\\work\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -330,7 +330,7 @@
             "IsEnum": false,
             "IndexerNamePrefix": "asp-route-",
             "IndexerTypeName": "System.String",
-            "Documentation": "\n            <summary>\n            Additional parameters for the route.\n            </summary>\n        ",
+            "Documentation": null,
             "Diagnostics": [],
             "Metadata": {
               "Common.PropertyName": "RouteValues"

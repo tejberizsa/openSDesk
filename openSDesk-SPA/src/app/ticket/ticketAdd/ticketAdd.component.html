@@ -1,13 +1,201 @@
-<div class="container mt-5">
+<div class="container mt-5 fadeInRight">
   <div class="row headerRow">
-    <div class="card col-12 border-primary mb-3" style="width: auto;">
+    <div class="card col-12 mb-3" style="width: auto;">
       <div class="card-header">
-        <!-- <h3>Open ticket </h3> -->
-        <h3>Open ticket on Behalf of this user </h3>
+        <h3 *appHasRole="['User']">Open ticket </h3>
+        <h3 *appHasRole="['Admin', 'Clerk']">Open ticket on Behalf of this user </h3>
       </div>
       <div class="card-body">
-        <h4 class="card-title">Primary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <form [formGroup]="ticketForm" (ngSubmit)="createTicket()" *ngIf="!(ticketId > 0)">
+          
+          <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+              <div class="form-group">
+                <label for="requester">Requester</label>
+                <p>
+                  <small id="requesterHelp" *appHasRole="['Admin', 'Clerk']" class="text-muted">You can change the requester if you are reporting an issue on behalf of someone else.</small>
+                </p>
+                <select class="form-control" aria-describedby="requesterHelp" id="requester">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+              <div class="form-group">
+                <label for="exampleSelect1">Category</label>
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6 col-md-4 offset-md-2">
+              <div class="form-group">
+                <label for="exampleSelect1">Ticket type</label>
+                <select class="form-control">
+                  <option value="0">Incident</option>
+                  <option value="1">Task</option>
+                  <option value="2">Change request</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6 col-md-4">
+              <div class="form-group">
+                <label for="exampleSelect1">Priority</label>
+                <select class="form-control" id="priority">
+                  <option value="0" class="text-danger">Critical</option>
+                  <option value="1" class="text-warning">High</option>
+                  <option value="2" class="text-primary">Medium</option>
+                  <option value="3" class="text-success">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6 col-md-4 offset-md-2">
+              <div class="form-group mt-2">
+                <label for="location"> </label>
+                <input type="text" [ngClass]="{'is-invalid': ticketForm.get('location').errors && ticketForm.get('location').touched}" 
+                  class="form-control" formControlName="location" placeholder="Location" id="location">
+                <div class="invalid-feedback">Location is required</div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4" *appHasRole="['Admin', 'Clerk']">
+              <div class="form-group">
+                <label for="exampleSelect1">Source</label>
+                <select class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+              <div class="form-group" style="margin-top: 42px;">
+                <label for="summary">Summary</label>
+                <p>
+                  <small id="requesterHelp" class="text-muted">
+                    Please provide a short description of the nature of your issue. 
+                    Something along the lines of "email isn't working" can help the service desk quickly categorize this as an email problem.
+                  </small>
+                </p>
+                <input type="text" [ngClass]="{'is-invalid': ticketForm.get('summary').errors && ticketForm.get('summary').touched}" 
+                  class="form-control" formControlName="summary" placeholder="Summary" id="summary">
+                <div class="invalid-feedback">Summary is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+              <div class="form-group" style="margin-top: 28px;">
+                <label for="description">Description</label>
+                <p>
+                  <small id="requesterHelp" class="text-muted">
+                    The more information you can provide here, the easier time the support organization will 
+                    have in diagnosing and resolving your incident.
+                  </small>
+                </p>
+                <textarea formControlName="description" placeholder="Description" class="form-control" rows="8" id="description"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+        </form>
+
+        <div class="col-md-6 col-10 offset-md-3 offset-1" *ngIf="ticketId > 0" style="margin-top: 40px;">
+    
+          <div class="card">
+        
+        
+              <div class="card-body">
+                  <h4 class="card-title">Add attachements</h4>
+              <div class="">
+              
+                  
+              
+                <div ng2FileDrop
+                     [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                     (fileOver)="fileOverBase($event)"
+                     [uploader]="uploader"
+                     class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+                     <i class="fa fa-upload fa-3x"></i>
+                    Drop here
+                    <input type="file" ng2FileSelect [uploader]="uploader" multiple class="form-controll" /><br/>
+                </div>
+              </div>
+              
+              <div class="" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
+              
+                <h6>Attachements</h6>
+                <p>In progress: {{ uploader?.queue?.length }}</p>
+              
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="50%">Name</th>
+                        <th>Size</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of uploader.queue">
+                        <td><strong>{{ item?.file?.name }}</strong></td>
+                        <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                    </tr>
+                    </tbody>
+                </table>
+              
+                <div>
+                    <div>
+                        Queue:
+                        <div class="progress mb-4">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success btn-s"
+                            (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                        <span class="fa fa-upload"></span> Upload
+                    </button>
+                    <button type="button" class="btn btn-warning btn-s"
+                            (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                        <span class="fa fa-ban"></span> Cancel
+                    </button>
+                    <button type="button" class="btn btn-danger btn-s"
+                            (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                        <span class="fa fa-trash"></span> Delete
+                    </button>
+                </div>
+              
+              </div>
+              </div>
+              </div>
+    
+              <div class="row justify-content-center">
+                  <div class="form-group text-center" style="margin-top: 8px;">
+                      <button form="postForm" class="btn btn-success mr-2" [disabled]="uploader?.queue?.length" type="submit" 
+                      [routerLink]="['/detail/', postId]">Upload done, I check my ticket</button>
+                    </div>
+              </div>
+            </div>
+
       </div>
     </div>
   </div>
