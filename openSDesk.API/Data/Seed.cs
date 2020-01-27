@@ -101,6 +101,18 @@ namespace openSDesk.API.Data
                 }
                 _context.SaveChanges();
             }
+
+            // seed initial categories
+            if (_context.Categories.Count() < 1)
+            {
+                var sourceData = System.IO.File.ReadAllText("Data/SeedData/CategoryData.json");
+                var sources = JsonConvert.DeserializeObject<List<Category>>(sourceData);
+                foreach (var source in sources)
+                {
+                    _context.Categories.Add(source);
+                }
+                _context.SaveChanges();
+            }
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)

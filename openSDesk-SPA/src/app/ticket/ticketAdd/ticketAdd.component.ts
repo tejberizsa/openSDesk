@@ -44,13 +44,13 @@ export class TicketAddComponent implements OnInit {
 
   createTicketForm() {
     this.ticketForm = this.fb.group({
-      requesterId: [this.authService.decodedToken.nameid],
+      requesterId: [{value: this.authService.decodedToken.nameid, disabled: true}, Validators.required],
       type: [''],
-      sourceId: [''],
-      categoryId: [''],
-      priority: [''],
-      summary: [''],
-      description: [''],
+      sourceId: [{value: 'Web', disabled: true}, Validators.required],
+      categoryId: ['', Validators.required],
+      priority: [4, Validators.required],
+      summary: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(68)]],
+      description: ['', [Validators.required, Validators.minLength(24), Validators.maxLength(2000)]],
       location: ['']
     });
   }
@@ -62,6 +62,9 @@ export class TicketAddComponent implements OnInit {
         this.ticketId = ticketReturn.id;
         this.initializeUploader();
         this.alertify.success('Ticket created');
+        this.uploader.options.url = this.baseUrl + '';
+        this.uploader.uploadAll();
+        this.router.navigate(['/ticket/', this.ticketId]);
       }, error => {
         this.alertify.error(error);
       });
@@ -70,7 +73,7 @@ export class TicketAddComponent implements OnInit {
 
   initializeUploader() {
     this.uploader = new FileUploader({
-      url: this.baseUrl,
+      url: '',
       authToken: 'Bearer ' + localStorage.getItem('token'),
       isHTML5: true,
       allowedFileType: ['image', 'video', 'pdf', 'audio', 'pdf', 'compress', 'doc', 'xls', 'ppt'],
