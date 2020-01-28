@@ -13,11 +13,14 @@
               <div class="form-group">
                 <label for="requester">Requester</label>
                 <p>
-                  <small id="requesterHelp" *appHasRole="['Admin', 'Clerk']" class="text-muted">You can change the requester if you are reporting an issue on behalf of someone else.</small>
+                  <small id="requesterIdHelp" *appHasRole="['Admin', 'Clerk']" class="text-muted">You can change the requester if you are reporting an issue on behalf of someone else.</small>
                 </p>
-                <select class="form-control" aria-describedby="requesterHelp" id="requester" formControlName="requesterId">
+                <select class="form-control" aria-describedby="requesterHelp" id="requesterId" formControlName="requesterId"
+                [ngClass]="{'is-invalid': ticketForm.get('requesterId').errors}">
                   <option [value]="user.id" *ngFor="let user of users">{{user.username}}</option>
                 </select>
+                <div class="invalid-feedback" 
+                *ngIf="ticketForm.get('requesterId').hasError('required')" >Requester is required</div>
               </div>
             </div>
           </div>
@@ -25,10 +28,13 @@
           <div class="row">
             <div class="col-12 col-md-8 offset-md-2">
               <div class="form-group">
-                <label for="exampleSelect1">Category</label>
-                <select class="form-control" formControlName="categoryId">
+                <label for="categoryId">Category</label>
+                <select class="form-control" formControlName="categoryId"
+                [ngClass]="{'is-invalid': ticketForm.get('categoryId').errors && ticketForm.get('categoryId').touched}">
                   <option [value]="category.id" *ngFor="let category of categories">{{category.text}}</option>
                 </select>
+                <div class="invalid-feedback" 
+                *ngIf="ticketForm.get('categoryId').hasError('required') && ticketForm.get('categoryId').touched" >Category is required</div>
               </div>
             </div>
           </div>
@@ -37,22 +43,28 @@
             <div class="col-6 col-md-4 offset-md-2">
               <div class="form-group">
                 <label for="exampleSelect1">Ticket type</label>
-                <select class="form-control">
+                <select class="form-control" formControlName="type" id="type" 
+                [ngClass]="{'is-invalid': ticketForm.get('type').errors && ticketForm.get('type').touched}">
                   <option value="0">Incident</option>
                   <option value="1">Task</option>
                   <option value="2">Change request</option>
                 </select>
+                <div class="invalid-feedback" 
+                *ngIf="ticketForm.get('type').hasError('required') && ticketForm.get('type').touched" >Type is required</div>
               </div>
             </div>
             <div class="col-6 col-md-4">
               <div class="form-group">
-                <label for="exampleSelect1">Priority</label>
-                <select class="form-control" id="priority" formControlName="priority">
+                <label for="priority">Priority</label>
+                <select class="form-control" id="priority" formControlName="priority"
+                [ngClass]="{'is-invalid': ticketForm.get('priority').errors && ticketForm.get('priority').touched}">
                   <option value="1" class="text-danger">Critical</option>
                   <option value="2" class="text-warning">High</option>
                   <option value="3" class="text-primary">Medium</option>
                   <option value="4" class="text-success">Low</option>
                 </select>
+                <div class="invalid-feedback" 
+                *ngIf="ticketForm.get('priority').hasError('required') && ticketForm.get('priority').touched" >Priority is required</div>
               </div>
             </div>
           </div>
@@ -64,16 +76,21 @@
                 <input type="text" [ngClass]="{'is-invalid': ticketForm.get('location').errors && ticketForm.get('location').touched}" 
                   class="form-control" formControlName="location" placeholder="Location" id="location">
                 <div class="invalid-feedback">Location is required</div>
+                <div class="invalid-feedback" 
+                *ngIf="ticketForm.get('location').hasError('max') && ticketForm.get('location').touched" >Location length exceeded</div>
               </div>
             </div>
             <div class="col-6 col-md-4" *appHasRole="['Admin', 'Clerk']">
               <div class="form-group">
                 <label for="sourceId">Source</label>
-                <select class="form-control" formControlName="sourceId">
+                <select class="form-control" formControlName="sourceId" id="sourceId"
+                [ngClass]="{'is-invalid': ticketForm.get('sourceId').errors && ticketForm.get('sourceId').touched}">
                   <option>Web</option>
                   <option>E-mail</option>
                   <option>Personal</option>
                 </select>
+                <div class="invalid-feedback" 
+                *ngIf="ticketForm.get('sourceId').hasError('required') && ticketForm.get('sourceId').touched" >Source is required</div>
               </div>
             </div>
           </div>
@@ -90,7 +107,12 @@
                 </p>
                 <input type="text" [ngClass]="{'is-invalid': ticketForm.get('summary').errors && ticketForm.get('summary').touched}" 
                   class="form-control" formControlName="summary" placeholder="Summary" id="summary">
-                <div class="invalid-feedback">Summary is required</div>
+                  <div class="invalid-feedback" 
+                  *ngIf="ticketForm.get('summary').hasError('required') && ticketForm.get('summary').touched" >Summary is required</div>
+                  <div class="invalid-feedback" 
+                  *ngIf="ticketForm.get('summary').hasError('minlength') && ticketForm.get('summary').touched" >Too short summary</div>
+                  <div class="invalid-feedback" 
+                  *ngIf="ticketForm.get('summary').hasError('maxLength') && ticketForm.get('summary').touched" >Too long summary</div>
               </div>
             </div>
           </div>
@@ -105,7 +127,14 @@
                     have in diagnosing and resolving your incident.
                   </small>
                 </p>
-                <textarea formControlName="description" placeholder="Description" class="form-control" rows="8" id="description"></textarea>
+                <textarea formControlName="description" placeholder="Description" class="form-control" rows="8" id="description"
+                [ngClass]="{'is-invalid': ticketForm.get('description').errors && ticketForm.get('description').touched}"></textarea>
+                <div class="invalid-feedback" 
+                  *ngIf="ticketForm.get('description').hasError('required') && ticketForm.get('description').touched" >description is required</div>
+                  <div class="invalid-feedback" 
+                  *ngIf="ticketForm.get('description').hasError('minlength') && ticketForm.get('description').touched" >Too short description</div>
+                  <div class="invalid-feedback" 
+                  *ngIf="ticketForm.get('description').hasError('maxLength') && ticketForm.get('description').touched" >Too long description</div>
               </div>
             </div>
           </div>

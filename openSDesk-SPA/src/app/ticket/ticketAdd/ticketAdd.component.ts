@@ -24,6 +24,7 @@ export class TicketAddComponent implements OnInit {
   hasBaseDropZoneOver = false;
   users: User[];
   categories: Category[];
+  isUser = true;
 
   constructor(private authService: AuthService, private alertify: AlertifyService,
     private fb: FormBuilder, private ticketService: TicketService, private router: Router, private route: ActivatedRoute) { }
@@ -33,6 +34,7 @@ export class TicketAddComponent implements OnInit {
       this.users = data['userlist'];
       this.categories = data['categories'];
     });
+    this.isUser = this.authService.roleMatch(['User']);
     this.createTicketForm();
     // this.ticketId = 1;
     // this.initializeUploader();
@@ -44,14 +46,14 @@ export class TicketAddComponent implements OnInit {
 
   createTicketForm() {
     this.ticketForm = this.fb.group({
-      requesterId: [{value: this.authService.decodedToken.nameid, disabled: true}, Validators.required],
-      type: [''],
-      sourceId: [{value: 'Web', disabled: true}, Validators.required],
+      requesterId: [{value: this.authService.decodedToken.nameid, disabled: this.isUser}, Validators.required],
+      type: [0, Validators.required],
+      sourceId: [{value: 'Web', disabled: this.isUser}, Validators.required],
       categoryId: ['', Validators.required],
       priority: [4, Validators.required],
       summary: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(68)]],
       description: ['', [Validators.required, Validators.minLength(24), Validators.maxLength(2000)]],
-      location: ['']
+      location: ['', Validators.maxLength(82)]
     });
   }
 
@@ -62,8 +64,8 @@ export class TicketAddComponent implements OnInit {
         this.ticketId = ticketReturn.id;
         this.initializeUploader();
         this.alertify.success('Ticket created');
-        this.uploader.options.url = this.baseUrl + '';
-        this.uploader.uploadAll();
+        // this.uploader.options.url = this.baseUrl + '';
+        // this.uploader.uploadAll();
         this.router.navigate(['/ticket/', this.ticketId]);
       }, error => {
         this.alertify.error(error);
