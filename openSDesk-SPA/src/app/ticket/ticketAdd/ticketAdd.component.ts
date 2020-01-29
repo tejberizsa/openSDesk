@@ -48,7 +48,7 @@ export class TicketAddComponent implements OnInit {
     this.ticketForm = this.fb.group({
       requesterId: [{value: this.authService.decodedToken.nameid, disabled: this.isUser}, Validators.required],
       type: [0, Validators.required],
-      sourceId: [{value: 'Web', disabled: this.isUser}, Validators.required],
+      sourceId: [{value: 1, disabled: this.isUser}, Validators.required],
       categoryId: ['', Validators.required],
       priority: [4, Validators.required],
       summary: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(68)]],

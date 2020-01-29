@@ -36,7 +36,8 @@ namespace openSDesk.API.Helpers
             CreateMap<TicketForAddDto, Ticket>()
                 .ForMember(t => t.CreatedAt, opt => opt.MapFrom(dto => DateTime.Now))
                 .ForMember(t => t.ModifiedAt, opt => opt.MapFrom(dto => DateTime.Now))
-                .ForMember(t => t.Deleted, opt => opt.Equals(false));
+                .ForMember(t => t.Deleted, opt => opt.Equals(false))
+                .ForMember(t => t.StatusId, opt => opt.MapFrom(dto => 1));
             CreateMap<Ticket, TicketForDetailedDto>()
                 .ForMember(dto => dto.Source, opt => opt.MapFrom(t => t.Source.Text));
                 //.ForMember(dto => dto.Status, opt => opt.MapFrom(t => t.Status.Text))
