@@ -25,14 +25,14 @@ export interface Ticket {
     source: string;
     statusId: number;
     status: Status;
-    subStatus: SubStatus;
+    subStatus?: SubStatus;
     category: Category;
     requesterId: number;
     requester: User;
-    assignedToId: number;
-    assignedTo: User;
-    assignmentGroup: UserGroup;
-    notes: Note[];
-    resolutions: Resolution[];
-    surveys: Survey[];
+    assignedToId?: number;
+    assignedTo?: User;
+    assignmentGroup?: UserGroup;
+    notes?: Note[];
+    resolutions?: Resolution[];
+    surveys?: Survey[];
 }

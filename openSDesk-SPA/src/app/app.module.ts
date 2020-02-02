@@ -39,6 +39,7 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { HasRoleDirective } from './_directives/hasRole.directive';
 import { UserSelectResolver } from './_resolvers/user-select.resolver';
 import { CategoryListResolver } from './_resolvers/category-list.resolver';
+import { TicketDetailResolver } from './_resolvers/ticket-detail.resolver';
 
 // to use cookie banner uncomment implementation is app.module.ts and app.component.ts
 // const cookieConfig: NgcCookieConsentConfig = {
@@ -125,7 +126,8 @@ export class MyIntl extends TimeagoIntl {
          UserDetailResolver,
          UserEditResolver,
          UserSelectResolver,
-         CategoryListResolver
+         CategoryListResolver,
+         TicketDetailResolver
       ],
       bootstrap: [
          AppComponent

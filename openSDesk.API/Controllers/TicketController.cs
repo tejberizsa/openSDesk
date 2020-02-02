@@ -50,8 +50,8 @@ namespace openSDesk.API.Controllers
             throw new System.Exception("Failed to save ticket");
         }
 
-        [HttpPost("AddNote")]
-        public async Task<IActionResult> AddNote(NoteForAddDto noteForAddDto)
+        [HttpPost("{ticketId}/AddNote")]
+        public async Task<IActionResult> AddNote(int ticketId, NoteForAddDto noteForAddDto)
         {
             var ownerFromRepo = await _appRepo.GetUser(noteForAddDto.OwnerId);
 
@@ -60,13 +60,22 @@ namespace openSDesk.API.Controllers
             
             if (noteForAddDto.OwnerId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
+            
+            var ticketFromRepo = await _ticketRepo.GetTicket(ticketId);
+            if (ticketFromRepo == null)
+                return BadRequest("Posz vagy válasz nem elérhető");
 
             var noteToCreate = _mapper.Map<Note>(noteForAddDto);
 
             _ticketRepo.Add(noteToCreate);
+            noteToCreate.Owner = ownerFromRepo;
+            noteToCreate.Ticket = ticketFromRepo;
 
             if (await _ticketRepo.SaveAll())
-                return Ok("Note saved");
+            {
+                var noteToReturn = _mapper.Map<NoteForDetailedDto>(noteToCreate);
+                return Ok(noteToReturn);
+            }
 
             throw new System.Exception("Failed to save note");
         }
@@ -193,7 +202,7 @@ namespace openSDesk.API.Controllers
             throw new System.Exception("Failed to save survey");
         }
         
-        [HttpGet("{id}", Name = "GetTicket")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetTicket(int id)
         {
             Ticket ticket = await _ticketRepo.GetTicket(id);

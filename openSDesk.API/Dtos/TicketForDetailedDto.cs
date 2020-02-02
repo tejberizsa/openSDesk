@@ -19,20 +19,19 @@ namespace openSDesk.API.Dtos
         public DateTime? ClosedAt { get; set; }
         public DateTime? InvoicedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
-        public DateTime? NotificationSentAt { get; set; }
         public int SourceId { get; set; }
         public string Source { get; set; }
         public int StatusId { get; set; }
         public Status Status { get; set; }
-        public int SubStatusId { get; set; }
+        public int? SubStatusId { get; set; }
         public SubStatus SubStatus { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public int RequesterId { get; set; }
         public UserForTicketDetailDto Requester { get; set; }
-        public int AssignmentGroupId { get; set; }
+        public int? AssignmentGroupId { get; set; }
         public UserGroupForTicketDetailDto AssignmentGroup { get; set; }
-        public int AssignedToId { get; set; }
+        public int? AssignedToId { get; set; }
         public UserForTicketDetailDto AssignedTo { get; set; }
         
         public ICollection<NoteForDetailedDto> Notes { get; set; }

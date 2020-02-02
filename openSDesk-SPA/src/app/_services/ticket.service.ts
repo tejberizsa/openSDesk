@@ -23,12 +23,12 @@ export class TicketService {
     return this.http.post(this.baseUrl + 'Ticket/AddTicket', ticket);
   }
 
-  addNote(note: Note) {
-    return this.http.post(this.baseUrl + 'Ticket/AddNote', note);
+  addNote(ticketId: number, note: Note) {
+    return this.http.post(`${this.baseUrl}Ticket/${ticketId}/AddNote`, note);
   }
 
   assignToGroup(ticketId: number, groupId: number) {
-    return this.http.post(this.baseUrl + 'Ticket/' + ticketId + '/AssignToGroup/' + groupId, {});
+    return this.http.post(`${this.baseUrl}Ticket/${ticketId}/AssignToGroup/${groupId}`, {});
   }
 
   assignToUser(ticketId: number, userId: number) {
@@ -56,7 +56,7 @@ export class TicketService {
   }
 
   getTicket(id: number): Observable<Ticket> {
-    return this.http.get<Ticket>(this.baseUrl + 'Ticket/GetTicket/' + id);
+    return this.http.get<Ticket>(this.baseUrl + 'Ticket/' + id);
   }
 
   getTicketThread(container: string, userId?, categoryId?, statusId?, userGrouId?) {

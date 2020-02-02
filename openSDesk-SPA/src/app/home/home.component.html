@@ -36,13 +36,3 @@
     </div>
   </div>
 </div>
-<div *ngIf="loggedIn()" class="d-flex justify-content-center">
-    <pagination [boundaryLinks]="true" 
-                [totalItems]="pagination.totalItems"
-                [itemsPerPage]="pagination.itemsPerPage"
-                [(ngModel)]="pagination.currentPage"
-                (pageChanged)="pageChanged($event)"
-              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" [maxSize]=8 [rotate]="true">
-  </pagination>
-  
-</div>

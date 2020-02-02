@@ -40,8 +40,10 @@ namespace openSDesk.API.Helpers
                 .ForMember(t => t.StatusId, opt => opt.MapFrom(dto => 1));
             CreateMap<Ticket, TicketForDetailedDto>()
                 .ForMember(dto => dto.Source, opt => opt.MapFrom(t => t.Source.Text));
-                //.ForMember(dto => dto.Status, opt => opt.MapFrom(t => t.Status.Text))
-                //.ForMember(dto => dto.SubStatus, opt => opt.MapFrom(t => t.SubStatus.Text))
+                // .ForMember(dto => dto.Status, opt => opt.MapFrom(t => t.Status.Text))
+                // .ForMember(dto => dto.StatusId, opt => opt.MapFrom(t => t.Status.Id))
+                // .ForMember(dto => dto.SubStatus, opt => opt.MapFrom(t => t.SubStatus.Text))
+                // .ForMember(dto => dto.SubStatusId, opt => opt.MapFrom(t => t.SubStatus.Id));
                 //.ForMember(dto => dto.Category, opt => opt.MapFrom(t => t.Category.Text))
                 //.ForMember(dto => dto.Requester, opt => opt.MapFrom(t => t.Requester.Username))
                 //.ForMember(dto => dto.AssignmentGroup, opt => opt.MapFrom(t => t.AssignmentGroup.Name))
