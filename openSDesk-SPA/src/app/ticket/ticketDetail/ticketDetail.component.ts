@@ -5,6 +5,7 @@ import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Note } from 'src/app/_models/note';
 import { AuthService } from 'src/app/_services/auth.service';
+import { TicketType } from 'src/app/_models/ticketType.enum';
 
 @Component({
   selector: 'app-ticketdetail',
@@ -23,6 +24,10 @@ export class TicketDetailComponent implements OnInit {
       this.ticket = data['ticket'];
     });
     console.log(this.ticket);
+  }
+
+  getEnumString(id: number) {
+    return TicketType[id];
   }
 
   sendNote() {

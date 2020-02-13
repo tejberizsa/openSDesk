@@ -35,3 +35,4 @@ C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\User
 C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserGroupData.json
 C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserSeedData.json
 C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\CategoryData.json
