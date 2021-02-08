@@ -129,7 +129,7 @@ namespace openSDesk.API.Data
                                                  (t.Resolutions == null ||
                                                  t.Resolutions != null && t.Resolutions.Any(r => r.Refused == true))));
                     break;
-                case "AssignedToGroup": // clerk group tickets assigned to clerk
+                case "AssignedToGroup": //  assigned to somebody in clerk group
                     user = await _context.Users.FirstOrDefaultAsync(u => u.Id == ticketParams.UserId.Value);
                     tickets = tickets.Where(t => t.AssignedTo != null && 
                                                  user.Groups.Any(g => g.UserGroupId == t.AssignmentGroupId &&
@@ -140,6 +140,16 @@ namespace openSDesk.API.Data
                     tickets = tickets.Where(t => t.AssignedToId == ticketParams.UserId.Value && 
                                                  (t.Resolutions == null ||
                                                  t.Resolutions != null && t.Resolutions.Any(r => r.Refused == true)));
+                    break;
+                case "ResolvedByGroup": // resolved by clerk group
+                    user = await _context.Users.FirstOrDefaultAsync(u => u.Id == ticketParams.UserId.Value);
+                    tickets = tickets.Where(t => t.AssignedTo != null && 
+                                                 user.Groups.Any(g => g.UserGroupId == t.AssignmentGroupId &&
+                                                 (t.Resolutions != null && t.Resolutions.Any(r => r.Refused == false))));
+                    break;
+                case "ResolvedBy": // resolved by current clerk
+                    tickets = tickets.Where(t => t.AssignedToId == ticketParams.UserId.Value && 
+                                                 (t.Resolutions != null && t.Resolutions.Any(r => r.Refused == false)));
                     break;
                 case "Requests": // not resolved jet requested by current user
                     tickets = tickets.Where(t => t.RequesterId == ticketParams.UserId.Value &&

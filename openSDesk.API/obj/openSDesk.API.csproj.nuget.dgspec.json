@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {}
+    "E:\\work\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {}
   },
   "projects": {
-    "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {
+    "E:\\work\\openSDesk\\openSDesk.API\\openSDesk.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+        "projectUniqueName": "E:\\work\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
         "projectName": "openSDesk.API",
-        "projectPath": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
-        "packagesPath": "C:\\Users\\nvarga\\.nuget\\packages\\",
-        "outputPath": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\obj\\",
+        "projectPath": "E:\\work\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+        "packagesPath": "C:\\Users\\Tejberizsa\\.nuget\\packages\\",
+        "outputPath": "E:\\work\\openSDesk\\openSDesk.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\nvarga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tejberizsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +29,7 @@
         },
         "frameworks": {
           "netcoreapp2.1": {
+            "targetAlias": "netcoreapp2.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +41,7 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -81,7 +83,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

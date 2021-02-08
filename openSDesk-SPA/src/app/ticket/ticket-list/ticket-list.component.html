@@ -1,0 +1,18 @@
+<div class="container mt-5 fadeInRight">
+  <div class="col-1">
+    <div class="btn-group btn-group-vertical btn-group-messages">
+      <button class="btn btn-primary btn-message text-info" btnRadio="Unread" (click)="loadMessages('Unread')">
+        <i class="fa fa-envelope"></i> Unassigned
+      </button>
+      <button class="btn btn-primary btn-message" btnRadio="Inbox" (click)="loadMessages('Inbox')">
+        <i class="fa fa-envelope-open"></i> Assigned to group
+      </button>
+      <button class="btn btn-primary btn-message" btnRadio="Outbox" (click)="loadMessages('Outbox')">
+        <i class="fa fa-paper-plane"></i> Assigned to Me
+      </button>
+      <button class="btn btn-primary btn-message" btnRadio="Outbox" (click)="loadMessages('Outbox')">
+        <i class="fa fa-paper-plane"></i> My requests
+      </button>
+    </div>
+  </div>
+</div>

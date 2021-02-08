@@ -35,3 +35,14 @@ C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\User
 C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserGroupData.json
 C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserSeedData.json
 C:\JesusSaves\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\ResolutionCodeData.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\SourceData.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\SurveyResponseData.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserGroupAssignmentData.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserGroupData.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\UserSeedData.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\appsettings.Development.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\appsettings.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\CategoryData.json
+E:\work\openSDesk\openSDesk.API\bin\Debug\netcoreapp2.1\Data\SeedData\StatusData.json
+E:\work\openSDesk\openSDesk.API\obj\Debug\netcoreapp2.1\openSDesk.API.genruntimeconfig.cache

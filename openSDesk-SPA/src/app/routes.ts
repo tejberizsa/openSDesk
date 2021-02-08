@@ -16,6 +16,7 @@ import { TicketDetailComponent } from './ticket/ticketDetail/ticketDetail.compon
 import { UserSelectResolver } from './_resolvers/user-select.resolver';
 import { CategoryListResolver } from './_resolvers/category-list.resolver';
 import { TicketDetailResolver } from './_resolvers/ticket-detail.resolver';
+import { TicketListComponent } from './ticket/ticket-list/ticket-list.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -32,8 +33,8 @@ export const appRoutes: Routes = [
             { path: 'user/:id', component: UserDetailComponent, resolve: { user: UserDetailResolver } },
             { path: 'addTicket', component: TicketAddComponent,
                                 resolve: { userlist: UserSelectResolver, categories: CategoryListResolver }  },
-            { path: 'ticket/:id', component: TicketDetailComponent, resolve: { ticket: TicketDetailResolver } }
-            // { path: 'service', component: , data: {roles: ['Admin', 'Clerk']}}
+            { path: 'ticket/:id', component: TicketDetailComponent, resolve: { ticket: TicketDetailResolver } },
+            { path: 'list', component: TicketListComponent, data: {roles: ['Admin', 'Clerk']}}
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'}

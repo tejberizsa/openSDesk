@@ -13,7 +13,7 @@
     <div class="navbar-collapse collapse" [collapse]=isCollapsed>
       <ul class="navbar-nav mr-auto">
         <li *appHasRole="['Admin', 'Clerk']" class="nav-item mr-sm-4" routerLinkActive="active" (click)="onClick($event)">
-          <a class="nav-link text-info" [routerLink]="['/requests']">Service requests</a>
+          <a class="nav-link text-info" [routerLink]="['/list']">Service requests</a>
         </li>
         <li class="nav-item mr-sm-4" routerLinkActive="active" (click)="onClick($event)">
           <a class="nav-link" [routerLink]="['/addTicket']">Report incident</a>
