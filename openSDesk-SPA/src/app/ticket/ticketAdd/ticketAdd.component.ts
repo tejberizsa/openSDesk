@@ -66,7 +66,7 @@ export class TicketAddComponent implements OnInit {
         this.alertify.success('Ticket created');
         // this.uploader.options.url = this.baseUrl + '';
         // this.uploader.uploadAll();
-        this.router.navigate(['/ticket/', this.ticketId]);
+        this.router.navigate(['/ticket/' + this.ticketId]);
       }, error => {
         this.alertify.error(error);
       });

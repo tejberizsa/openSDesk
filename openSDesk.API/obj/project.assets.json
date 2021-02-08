@@ -4548,14 +4548,14 @@
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Microsoft.AspNet.WebApi.Client.5.2.6.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.Client.nuspec",
         "lib/net45/System.Net.Http.Formatting.dll",
         "lib/net45/System.Net.Http.Formatting.xml",
         "lib/netstandard2.0/System.Net.Http.Formatting.dll",
         "lib/netstandard2.0/System.Net.Http.Formatting.xml",
         "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
-        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml",
-        "microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
-        "microsoft.aspnet.webapi.client.nuspec"
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml"
       ]
     },
     "Microsoft.AspNetCore/2.1.1": {
@@ -12115,23 +12115,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tejberizsa\\.nuget\\packages\\": {},
+    "C:\\Users\\nvarga\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\work\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+      "projectUniqueName": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
       "projectName": "openSDesk.API",
-      "projectPath": "E:\\work\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
-      "packagesPath": "C:\\Users\\Tejberizsa\\.nuget\\packages\\",
-      "outputPath": "E:\\work\\openSDesk\\openSDesk.API\\obj\\",
+      "projectPath": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\openSDesk.API.csproj",
+      "packagesPath": "C:\\Users\\nvarga\\.nuget\\packages\\",
+      "outputPath": "C:\\JesusSaves\\openSDesk\\openSDesk.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Tejberizsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nvarga\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12197,7 +12197,11 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+>>>>>>> 18faaa5237e5604b6e0d77d83d41a650bfe6c2eb
       }
     }
   }
