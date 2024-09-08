@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "@auth0/angular-jwt": "^2.0.0",
-    "alertifyjs": "^1.11.2",
+    "alertifyjs": "^1.14.0",
     "bootstrap": "^4.1.1",
     "bootswatch": "^4.1.1",
     "cookieconsent": "^3.1.0",
